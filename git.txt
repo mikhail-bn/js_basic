@@ -22,4 +22,40 @@ git config user.email "новый.маил@почта.ком"
 Добавить файлы для записи в stage       git add somefile somefile somefile        если добавить все то      git add .
 После этого файлы стают зелеными при запуске команды git status
 
+Комит
+git commit -m "some_comment"
+
+LOG
+git log  показывает Ключ коммита Бренч Автор Дата
+краткая запись git log --oneline
+
+Отправка подготовленных изменений на гитхаб 
+git push
+Подробно 
+git push --ссылка_с_гитхаб.git-- branch
+
+Общий алгоритм добавления на github.com
+
+1. git status
+2. git add . или git add justthisfile1.txt justthisfile2.txt
+3. git commit -m "some_comment"
+4. git push --ссылка_с_гитхаб.git--  --branch (для копирования "ссылки" git remote -v для копирования  текущей "branch" git branch)
+5. git log  или git log --oneline
+
+
+ДОПОЛНИТЕЛЬНЫЕ КОМАНДЫ
+
+git reset some_file.txt	
+Команда убирает указанный.файл из стейдж
+
+git diff
+показывает строчки изменения
+
+git diff some_file.txt
+показывает строчки изменения только в some_file.txt
+
+git reset --hard
+отменяет изменения до педыдущего комита
+
+
 
