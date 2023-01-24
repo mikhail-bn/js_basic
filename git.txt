@@ -75,12 +75,12 @@ git branch new_branch
 git checkout new_branch
 переключает нас на ветку new_branch
 
-git merge 
-делает 
+git merge some_branch
+сливает содержимое some_branch в текущую активную ветку
 
 git branch -d some_branch
 git branch -D some_branch
-удаляет some_branch
+удаляет ветку some_branch
 
 
 
