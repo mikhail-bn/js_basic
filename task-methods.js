@@ -28,14 +28,12 @@
 
 // Задание #5 =========================================================================================
 
-// userString = prompt('Введите текст для обрезки.');
-// stringTrim = userString.trim();
-// console.log(stringTrim);
-// startSliceIndex = prompt('Введите индекс, с которого нужно начать обрезку строки.');
-// endSliceIndex = prompt('Введите индекс, которым нужно закончить обрезку строки.');
-// string = stringTrim.slice(startSliceIndex, endSliceIndex);
-// console.log(string);
-// alert(`Результат: ${string}`);
+userString = prompt('Введите текст для обрезки.');
+startSliceIndex = prompt('Введите индекс, с которого нужно начать обрезку строки.');
+endSliceIndex = prompt('Введите индекс, которым нужно закончить обрезку строки.');
+string = userString.trim().slice(startSliceIndex, endSliceIndex);
+console.log(string);
+alert(`Результат: ${string}`);
 
 
 // Задание #6 =========================================================================================
