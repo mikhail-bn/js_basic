@@ -3,6 +3,7 @@
 const animal = 'Monkey';
 console.log('toUpper: ', animal.toUpperCase());
 console.log('toLower: ', animal.toLowerCase());
+
  // При этом строка переменной остается без изменений
 console.log(animal);
 

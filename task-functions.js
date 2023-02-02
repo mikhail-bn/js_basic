@@ -22,7 +22,7 @@
 
 
 
-// Задание №2 ============================================================================================= 
+// Задание №2 =============================================================================================
 
 
 
@@ -96,8 +96,8 @@
 // let number = prompt('Введите число для которого следует высчитать кол-во делителей');
 // number = Number(number);
 // console.log('Число целое:', Number.isInteger(number));
-// if (!Number.isInteger(number) || number < 0) {    
-//     alert('number должен быть целым числом и больше нуля!');    
+// if (!Number.isInteger(number) || number < 0) {
+//     alert('number должен быть целым числом и больше нуля!');
 // } else {
 //     function getDivisorsCount(number = 1) {
 //         let countOfDivisors = 0;
@@ -108,9 +108,9 @@
 //             }
 //         }
 //         return countOfDivisors;
-//     } 
+//     }
 // const result = getDivisorsCount(number);
-// alert(`Для числа ${number} высчитано  ${result} делителей`)       
+// alert(`Для числа ${number} высчитано  ${result} делителей`)
 // };
 
 
@@ -135,7 +135,7 @@
 
 // const getInfo = (name, age) => {
 // console.log(`Привет, ${name}!`);
-// console.log(`Вам ${age} лет!`); 
+// console.log(`Вам ${age} лет!`);
 // }
 
 // getInfo('Максим', 20);
@@ -157,14 +157,36 @@
 // checkQuestionAnswer('Сколько в среднем зубов у взрослого человека?', '32');
 // checkQuestionAnswer('Как называется самая маленькая птица в мире?', 'Колибри');
 
+
+
+
 // Задание #5 CALLBACK ======================================================================================
 
-function showSuccessMessage(message) {
-    console.log(message);
-}
-function showErrorMessage(message) {
-    console.error(message);
-}
-function checkTextOnErrorSymbol(text, errorSymbol, successCallback, errorCallback) {
-    
-}
+
+
+// Поиск символа
+
+// const text = prompt('Введите текст для анализа.')
+
+// function showSuccessMessage(message) {
+//     //alert(message);
+//     console.log(message);
+// };
+// function showErrorMessage(message) {
+//     //alert(message);
+//     console.log(message);
+// };
+// function checkTextOnErrorSymbol(text, errorSymbol, successCallback, errorCallback) {
+//     let countErrors = 0;
+//     for(let i = 0; i <= text.length; i += 1){
+//         const currantSymbol = text[i];
+//         if (currantSymbol === errorSymbol && errorCallback) {
+//             errorCallback(`Найден запрещенный символ "${errorSymbol}" под индексом ${i}.`);
+//             countErrors += 1;
+//         }
+//     }
+//     if (successCallback && countErrors === 0) {
+//         successCallback('В данном тексте нет запрещенных символов');
+//     }
+// };
+// checkTextOnErrorSymbol(text, 'и', showSuccessMessage, showErrorMessage);
