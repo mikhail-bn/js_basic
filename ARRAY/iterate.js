@@ -85,6 +85,13 @@ const allElementsExist = salariesOfDevelopers.every((salary) => {
 console.log('allElementsExist: ', allElementsExist);
 
 
+// reduce  someArray.reduce((acc, item1, index, array) => {}, 0)
+
+salariesOfDevelopers.reduce((acc, salary, index, array) => {
+    console.log('acc:', acc);
+}, 0);
+
+
 
 
 
