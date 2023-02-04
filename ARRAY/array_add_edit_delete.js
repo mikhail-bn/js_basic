@@ -12,6 +12,9 @@ salariesOfDevelopers.unshift(100, 101);
 console.log('salariesOfDevelopers unshift:', salariesOfDevelopers);
 
 
+
+
+
 // Удаление элементов shift - с начала, pop - с конца;
 
 
@@ -23,6 +26,9 @@ console.log('salariesOfDevelopers shift:', salariesOfDevelopers);
 const lastRemovedElement = salariesOfDevelopers.pop();
 console.log('lastRemovedElement: ', lastRemovedElement);
 console.log('salariesOfDevelopers pop:', salariesOfDevelopers);
+
+
+
 
 // Изменять элементы массива
 

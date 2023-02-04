@@ -1,7 +1,7 @@
 const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
 // console.log(developerNames[2]);
 
- //  ==================================    for (начальное значение; условие; шаг)
+ //*  ==================================    for (начальное значение; условие; шаг)
 
 // for (let i = 0; i < developerNames.length; i += 1) {
 //     console.log('i', i);
@@ -12,7 +12,7 @@ const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
 
 
 
- // ====================================   for of (начальное значение; условие; шаг)
+ //* ====================================   for of (начальное значение; условие; шаг)
 
 // for (const name of developerNames) {
 //     console.log('name', name);
@@ -22,7 +22,7 @@ const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
 
 
 
-// ========================================== forEach  nameOfArray.forEach((name, index, array) => {});
+//* ========================================== forEach  nameOfArray.forEach((name, index, array) => {});
 
 
 // developerNames.forEach((name, index, array) => {
@@ -35,7 +35,8 @@ const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
 
 
 
-// ========================================================   map 
+//* ========================================================   map 
+// позволяет умножить все элементы массива 
 
 
 const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
@@ -48,8 +49,8 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-// ========================================================   filter
-
+//* ========================================================   filter
+// фильтрует массив согласно условия
 
 // const filteredSalaries = salariesOfDevelopers.filter((salary, index, array) => {
 //     return index % 2 === 0 && index != 0;
@@ -62,7 +63,7 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-//  ===========================================================   find
+//*  ===========================================================   find
 
 
 // const foundSomeSalary = salariesOfDevelopers.find((salary) => {
@@ -74,7 +75,8 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-// ======================================================  findIndex
+//* ======================================================  findIndex
+// возвращает индекс искомого элемента
 
 // const searchSomeSalary = salariesOfDevelopers.findIndex((salary) => {
 //     return salary === 2000;
@@ -85,7 +87,8 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-// ======================================================== some    every   (возвращает true false) 
+//* ========================================================    some    every   
+// возвращает true false  - some - хотябы один элемент удовлетворяющий условию;  every - все элементы  
 
 
 
@@ -105,7 +108,8 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-// ===========================================  reduce  someArray.reduce((acc, item1, index, array) => {}, 0)
+//* ================================  reduce  someArray.reduce((acc, item1, index, array) => {}, 0)
+// обязательно содержит (callback, начальная величина аккумуляции массива)
 
 
 // const sum = salariesOfDevelopers.reduce((acc, salary, index, array) => {
@@ -117,7 +121,7 @@ const salariesOfDevelopers = [400, 550, 700, 2000, 250, -2];
 
 
 
-// ===========================================   sort   someArray.sort((a, b) => {}, 0)
+//* ===========================================   sort   someArray.sort((a, b) => {}, 0)
 
 
 // const someSort = salariesOfDevelopers.sort((a, b) => {

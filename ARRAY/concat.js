@@ -1,5 +1,6 @@
 
-// concat  и ...
+//* concat  и ...
+// ОБЪЕДИНЕНИЕ МАССИВОВ
 
 
 const currantDevelopers = ['Mikhail', 'Andrew', 'Vasya', 'Ivan'];
