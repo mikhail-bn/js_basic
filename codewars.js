@@ -47,3 +47,41 @@
 
 // // Another solution reduce
 // const positiveSum = (arr) => arr.reduce((sum, n) => n > 0 ? sum + n : sum, 0);
+
+
+
+
+
+
+//*Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+
+
+// const arrayOfSheep = [true,  true, true, false, true, true, true,  true, true, false, true, false, true, false, false, true, true,  true,  true, true , false, false, true, true];
+// function countSheeps(arrayOfSheep) {
+//     // TODO May the force be with you
+//     let presentSheeps = 0;
+//     for (let i = 0; i <= arrayOfSheep.length; i += 1) {
+//       if (arrayOfSheep[i]) presentSheeps += 1    
+//     }
+//     return presentSheeps;
+// }
+// countSheeps(arrayOfSheep);
+
+//* Clock shows h hours, m minutes and s seconds after midnight.
+//* Your task is to write a function which returns the time since midnight in milliseconds.
+
+// function past(h, m, s){
+//     //#Happy Coding! ^_^
+//     const midnight = new Date(0,0,0,0,0,0,0);   
+//     let someData = new Date(0,0,0,0,0,0,0);
+//     someData.setHours(h);
+//     someData.setMinutes(m)
+//     someData.setSeconds(s);
+//     const someDifference = someData - midnight;
+//     return someDifference;
+//   }
+
+// Another solution
+// function past(h, m, s){
+//     return ((h*3600)+(m*60)+s)*1000;
+//   }
