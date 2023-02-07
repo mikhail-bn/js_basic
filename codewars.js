@@ -85,3 +85,21 @@
 // function past(h, m, s){
 //     return ((h*3600)+(m*60)+s)*1000;
 //   }
+
+//* Simple, remove the spaces from the string, then return the resultant string.
+
+// function noSpace(x){
+//     let newStringX = '';
+//   for ( let i = 0; i < x.length; i += 1){
+//     if(x[i] !== ' ') {
+//       newStringX += x[i];
+//     }
+//   }
+//   return newStringX;
+// }
+
+// Another solution
+
+// function noSpace(x) {
+//     return x.replaceAll(' ', '');
+//   }

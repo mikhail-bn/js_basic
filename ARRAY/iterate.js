@@ -1,4 +1,4 @@
-// const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
+ // const developerNames = ['Mikhail', 'Igor', 'Nastya', 'Ivan'];
 // console.log(developerNames[2]);
 
  //*  ==================================    for   (  начальное значение;    условие;    шаг  )
@@ -140,7 +140,7 @@
 //     console.log();
         // return a - b //* По возрастанию
 //         return b - a; //* Обратная сортировка
-// });
+// });  
 // console.log(salariesOfDevelopers);
 
 
