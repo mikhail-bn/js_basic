@@ -158,3 +158,5 @@
 //     } return 0;
 // }); //* Сортировка по алфавиту обратный порядок строковых
 // console.log('developerNames: ', developerNames);
+
+

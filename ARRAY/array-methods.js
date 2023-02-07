@@ -19,13 +19,13 @@
 // Принимает те же параметры что и предыдущий, поэтому работает через вставку в переменную
 // Нельзя передавать замену, ТОЛЬКО ДВА ПАРАМЕТРА диапазон удаления
 
-const agesOfDevelopers = [25, 35, 40, 80];
+// const agesOfDevelopers = [25, 35, 40, 80];
 
-console.log('agesOfDevelopers.slice:', agesOfDevelopers.slice(0, 2));
-console.log('agesOfDevelopers:', agesOfDevelopers);
+// console.log('agesOfDevelopers.slice:', agesOfDevelopers.slice(0, 2));
+// console.log('agesOfDevelopers:', agesOfDevelopers);
 
-const slicedAgesOfDevelopers = agesOfDevelopers.slice(0, 2);
-console.log('slicedAgesOfDevelopers:', slicedAgesOfDevelopers);
+// const slicedAgesOfDevelopers = agesOfDevelopers.slice(0, 2);
+// console.log('slicedAgesOfDevelopers:', slicedAgesOfDevelopers);
 
 
 
@@ -73,3 +73,11 @@ console.log('slicedAgesOfDevelopers:', slicedAgesOfDevelopers);
 
 // technologies.reverse();
 // console.log('technologies', technologies); 
+
+
+//* Округление в JS
+
+// Math.ceil() — округление в большую сторону
+// Math.floor() — округление в меньшую сторону
+// Math.round() — округление до целого числа
+// toFixed() JS — округление до заданного количества чисел после запятой

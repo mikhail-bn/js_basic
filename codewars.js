@@ -103,3 +103,65 @@
 // function noSpace(x) {
 //     return x.replaceAll(' ', '');
 //   }
+
+//* Nathan loves cycling. Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling. You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+// function litres(time) {
+//     return Math.floor(time / 2);    
+//  }
+
+//* Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+
+// function invert(array) {
+//     return array.map(elem => -elem);
+//  }
+
+// Another solution 
+
+// function invert(array) {
+//     var newArr = [];
+//     for(var i = 0; i < array.length; i++){
+//       newArr.push(-array[i]);
+//     }
+//      return newArr;
+//   }
+
+//* Создайте функцию с двумя аргументами, которая будет возвращать массив первых n кратных x.
+//* Предположим, что и заданное число, и количество подсчетов будут положительными числами больше 0.
+
+// TODO Мой вариант по моим тестам подходит, но не проходит по тестам на сайте
+// let z = [];
+// function countBy(x, n) {    
+//     for (let i = 1; i < (n ** x) + 1; i += 1) {
+//         if (x > 0 && n > 0 && i % x === 0 &&  z.length < n) {
+//             z.push(i);
+//         }
+//     }
+//     return z;
+// }
+// countBy(1, 10)
+// console.log([...z]);
+
+// Решение с сайта ((((((((((((( ППЦ....
+
+// function countBy(x, n) {
+//     let result = [];
+//     for (let i = 1; i <= n; i++) {
+//       result.push(x * i);
+//     }
+//     return result;
+//   }
+
+//* Convert number to reversed array of digits. Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+//* Преобразовать число в перевернутый массив цифр. Учитывая случайное неотрицательное число, вы должны вернуть цифры этого числа в массиве в обратном порядке.
+
+// let arr = [];
+// function digitize(n) {
+//     n = String(n);
+//     arr = n.split('').reverse().map(Num => +Num);       
+//     return arr;
+//   }
+
+
+ 
