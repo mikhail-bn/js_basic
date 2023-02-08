@@ -124,7 +124,10 @@
 // let favoriteCoffeeName = prompt('Поиск кофе по названию:'); // Запрос prompt для получения переменной от пользователя
 // favoriteCoffeeName = favoriteCoffeeName.trim().toLocaleLowerCase(); // Перевод полученного значения в нижний регистр без пробелов
 
-// const favoriteCoffeeIndex = coffees.findIndex((vasyaPupkin) => vasyaPupkin.toLocaleLowerCase() === favoriteCoffeeName); // Помещения функции сравнения в callback, то есть перебор осуществляется НЕ циклом а поиском индекса, а в callback помещаем переменную (поскольку она одна это ассоциируется с элементом массива) и далее в теле callback'a помещаем условие сравнения значения введенного пользователем (favoriteCoffeeName), с элементоми массива. Поскольку итерация findIndex "ищет" искомый элемент, то проходит по элементам массива заменяя цикл. БЕЗ СКОБОК в callback
+// const favoriteCoffeeIndex = coffees.findIndex((vasyaPupkin) => vasyaPupkin.toLocaleLowerCase() === favoriteCoffeeName); 
+
+// Помещения функции сравнения в callback, то есть перебор осуществляется НЕ циклом а поиском индекса, а в callback помещаем переменную (поскольку она одна это ассоциируется с элементом массива) и далее в теле callback'a помещаем условие сравнения значения введенного пользователем (favoriteCoffeeName), с элементоми массива. Поскольку итерация findIndex "ищет" искомый элемент, то проходит по элементам массива заменяя цикл. БЕЗ СКОБОК в callback
+
 // const favoriteCoffee = coffees[favoriteCoffeeIndex]; // Определение переменной для сопоставления с элементом массива.
 
 // if (favoriteCoffee) {
@@ -331,7 +334,22 @@
 
 //* 4
 
+// const goals = [8, 1, 1, 3, 2, -1, 5];
+// let answer = goals.some(elem => {return elem < 0});
+// if (answer) {
+//     alert('Были автоматические поражения: да')
+// } else alert('Были автоматические поражения: нет')
+
 //* 5
+
+// const goals = [8, 1, 1, 3, 2, -1, 5];
+// const onlyPlayed = goals.filter(elem => elem >= 0);
+// const allGoals = onlyPlayed.reduce((acc, goal) => {
+//     return acc += goal;
+// }, 0);
+// const averageGoals = allGoals / onlyPlayed.length
+// alert (`Среднее количество голов за матч равно ${averageGoals}`)
+// console.log('allGoals: ', allGoals);
 
 //* 6
 
@@ -382,6 +400,56 @@
 // const getMathResult = (expression) => {
 
 // }
+
+
+//* Решение 
+
+const possibleMathSigns = [">", ">", "<", "=", "+", "-", "*", "/"];
+const isNumber = (a) => !isNaN(a) && !isNaN(parseFloat(a));
+
+const getMathResult = (expression) => {
+    let resultExpression = [...expression];
+    if (expression.length > 3) {
+        resultExpression = resultExpression.filter(
+            (item) => isNumber(item) || possibleMathSigns.includes(item)
+        );
+    }
+    const firstDigit = Number(resultExpression[0]);
+    const secondDigit = Number(resultExpression[resultExpression.length - 1]);
+    const mathSign = resultExpression[1];
+
+    if (
+        resultExpression.length < 3 ||
+        expression.length < 3 ||
+        !isNumber(firstDigit) ||
+        !isNumber(secondDigit) ||
+        !possibleMathSigns.includes(mathSign)
+    ) {
+        return "Ошибка";
+    }
+
+    switch (mathSign) {
+        case ">":
+            return firstDigit > secondDigit;
+        case "<":
+            return firstDigit < secondDigit;
+        case "=":
+            return firstDigit === secondDigit;
+        case "+":
+            return firstDigit + secondDigit;
+        case "-":
+            return firstDigit - secondDigit;
+        case "*":
+            return firstDigit * secondDigit;
+        case "/":
+            return firstDigit / secondDigit;
+        default:
+            return "Ошибка";
+    }
+};
+
+const result = getMathResult(["100", "hello", "javascript", "help200", "+", 4]);
+console.log("result", result);
 
 
 
@@ -441,18 +509,8 @@
 // }, []);
 
 // console.log('flatArray', flatArray);
-//  &&  z[n] <= n       && Number.isInteger(i % x)
 
 
-let arr = [];
-function digitize(n) {
-    n = String(n);
-    arr = n.split('').reverse().map(Num => +Num);       
-    return arr;
-  }
-  
-  digitize(35231)
-  alert([...arr])
 
 
 

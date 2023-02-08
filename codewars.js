@@ -163,5 +163,8 @@
 //     return arr;
 //   }
 
+// digitize(35231)
+// alert([...arr])
+
 
  
