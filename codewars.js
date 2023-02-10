@@ -166,5 +166,79 @@
 // digitize(35231)
 // alert([...arr])
 
+//* You will be given an array a and a value x. All you need to do is check whether the provided array contains the value. Array can contain numbers or strings. X can be either. Return true if the array contains the value, false if not.
 
+// function check(a, x) {
+//     let b = a.some(aElem => aElem === x);
+//     return b;
+//   }
+
+// Another solution
+
+// const check = (a,x) => a.includes(x);
+
+//*In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 (aug) new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+
+//! 99 Положительных тестов 1 отрицательный(
+
+// let lastYear = 1; 
+// function nbYear(p0, percent, aug, p) {
+//     let population = p0;       
+//     for (let i = 1; i <= lastYear; i += 1) {
+//         if (population < p) {
+//             population = population + population * percent / 100 + aug;
+//             lastYear = i + 1
+//         } else lastYear = i - 1;
+//     }
+//     return lastYear;    
+// }
+
+// nbYear(1000, 2, 50, 1200)
+// alert(`Городу нужно ${lastYear} лет`)
+
+// Solution also wrong but it's the same way
+
+// function nbYear(p0, percent, aug, p) {
+//     let years = 0;
+//     for (years; p0 < p; years++) {
+//       p0 += p0 * (percent / 100) + aug;
+//     }
+//     return years;
+//   }
+// Solution from codewars
+
+
+// function nbYear(p0, percent, aug, p) {    
+//     for (var years = 0; p0 < p; years++) {
+//       p0 = Math.floor(p0 + p0 * percent / 100 + aug);
+//     }
+//     return years
+//   }
  
+//* You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+
+// let sMidIndex = 0;
+// let midSymbol = '';
+// function getMiddle(s){
+//     if (s.length % 2 === 0) {
+//       sMidIndex = s.length / 2;
+//       midSymbol = s[sMidIndex-1] + s[sMidIndex];
+//     } else {
+//       sMidIndex = Math.floor(s.length / 2);
+//       midSymbol = s[sMidIndex];
+//     }
+//      return midSymbol;
+//    }
+
+
+//* Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+// function repeatStr (n, s) {
+//     let str = '';
+//     for (let i = 0; i < n; i += 1) {
+//       str += s;
+//     }
+//     return str;
+//   }
+
