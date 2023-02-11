@@ -83,11 +83,14 @@
 // toFixed() JS — округление до заданного количества чисел после запятой, округлив значение по математическим правилам
 
 
-//* Удаление и замена replace()
+//* Удаление и замена replace('what', 'toWhat')
 //* Не меняет исходный массив
 
 // const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
 
 // console.log(p.replace('dog', 'monkey'));
 // Expected output: "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
+
+//* Возведение в степень 
+// Math.pow(base, exponent)
 

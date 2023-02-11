@@ -199,72 +199,78 @@ job: 'веб-разработчик',
 //* 1. heroPlayer. Объект игрока, который содержит свойства name - имя героя; health - шкала здоровья, которая изначально равна 100; heatEnemy - функция, которая принимает в себя объект enemy и отнимает у объекта enemy 10 единиц здоровья (ключ health)
 //* 2. enemyPlayer. Объект врага, который содержит свойства name - имя героя; health - шкала здоровья, которая изначально равна 100; heatHero - функция, которая принимает в себя объект hero и отнимает у объекта hero 10 единиц здоровья (ключ health) Внутри функции startGame вам необходимо случайным образом генерировать число от 0 до 1. Если выпадает 0, то нужно вызвать метод heatEnemy у объекта heroPlayer, если 1 - то heatHero у enemyPlayer Для того, чтобы функция генерировала несколько раз случайные значения и игроки дрались, пока у кого-то не закончатся жизни, рекомендуется использовать цикл while, который будет выполнятся, пока у любого игрока свойство health не станет меньше либо равно нулю. После выполнения цикла необходимо определить, какой игрок выиграл, и вывести сообщение через,где name и health - значения свойств победившего игрока. alert(`${name} победил! У него осталось ${health} здоровья`) Для генерации случайных значений используйте следующую функцию. 
 
-function getRandomNumberInRange(min, max) {
-return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-//* Для проверки работоспособности функции startGame используйте данный код. В нем нет методов heatEnemy и heatHero, вам необходимо самим их реализовать.
+// // Генерация числа из диапазона min max включая их
+// function getRandomNumberInRange(min, max) {
+// return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// //* Для проверки работоспособности функции startGame используйте данный код. В нем нет методов heatEnemy и heatHero, вам необходимо самим их реализовать.
 
-const hero = {
-name: 'Batman',
-health: 100,
-} 
-const enemy = {
-name: 'Joker',
-health: 100,
-}
+// const hero = {
+// name: 'Batman',
+// health: 100,
+// heatEnemy: (enemy) => enemy.health -= 10
+// } 
+// const enemy = {
+// name: 'Joker',
+// health: 100,
+// heatHero: (hero) => hero.health -= 10
+// }
 
-function startGame(heroPlayer, enemyPlayer) {
-    while (heroPlayer.health > 0 || enemyPlayer.health > 0) {
-        const randomHeatIndex = getRandomNumberInRange(0, 1);
-        if (randomHeatIndex === 0) {
-            heroPlayer.heatEnemy(enemyPlayer);
-            if (enemyPlayer.health <= 0) {
-                break;
-            }
-        } else {
-            enemyPlayer.heatHero(heroPlayer);
-            if (heroPlayer.health <= 0) {
-                break;
-            }
-        }
-    }
-    if (heroPlayer.health <= 0) {
-        alert(`${enemyPlayer.name} победил! У него осталось ${enemyPlayer.health} здоровья`);
-    } else {
-        alert(`${heroPlayer.name} победил! У него осталось ${heroPlayer.health} здоровья`);
-    }
-}
+// function startGame(heroPlayer, enemyPlayer) {
+//     // Выполнять код пока значение ключа health у heroPlayer > 0   И   значение ключа health у enemyPlayer > 0 
+//     while (heroPlayer.health > 0 || enemyPlayer.health > 0) {
+//         const randomHeatIndex = getRandomNumberInRange(0, 1); // Помещение в переменную randomHeatIndex функцию случайной генерации числа, поскольку участников 2е и им должны даваться равные шансы в функцию помещаются 0 и 1  как min max
+//         // Если из генератора получен 0 то...
+//         if (randomHeatIndex === 0) {
+//             heroPlayer.heatEnemy(enemyPlayer); // Выполнить функцию heatEnemy (=> enemy.health -= 10), то есть при генерации 0 вызывается ключ из помещённой переменной объекта heroPlayer (кот при вызове принимает объект hero) и этот ключ есть функция кот принимает объект enemy и отнимает у значения health 10.
+//             if (enemyPlayer.health <= 0) { // Проверка состояния значения ключа health у enemy
+//                 break; // Остановка выполнения while
+//             }
+//             // Если получается что randomHeatIndex === 0 не является true ( а это не только 1 ), то есть функция только под 2 переменных
+//         } else {
+//             enemyPlayer.heatHero(heroPlayer);
+//             if (heroPlayer.health <= 0) { // Проверка состояния значения ключа health у hero
+//                 break; // Остановка выполнения while
+//             }
+//         }
+//     } // цикл прерван одной из break, то есть ключ health одной из 2х переменных принимающих соотв объекты <= 0 
 
-startGame(hero, enemy);
+//     if (heroPlayer.health <= 0) {
+//         alert(`${enemyPlayer.name} победил! У него осталось ${enemyPlayer.health} здоровья`);
+//     } else {
+//         alert(`${heroPlayer.name} победил! У него осталось ${heroPlayer.health} здоровья`);
+//     }
+// }
 
-
-
+// startGame(hero, enemy);
 
 
 
 
 //* Задание #7 (дополнительное)
+
+
 //* Представьте, что в полицейском участке проводится расследование. Было совершено несколько преступлений. У полицейских есть другие более приоритетные задания, поэтому они попросили вас написать программу, которая будет вычислять преступника по уже известным данным. Ваша задача состоит в том, чтобы создать функцию getKiller. getKiller принимает в себя 2 параметра:
 //* 1. suspectInfo. Это объект, в котором ключи - это подозреваемые в преступлении люди, а значения - массивы людей, которых видели подозреваемые в день убийства
 //* 2. deadPeople. Это массив с именами людей, которых убил преступник Преступником является тот, кто видел всех убитых  юдей в день убийства. Функция getKiller должна возвращать имя преступника.
 //* Примеры результатов функции getKiller:
 
-getKiller(
-{
-'James': ['Jacob', 'Bill', 'Lucas'],
-'Johnny': ['David', 'Kyle', 'Lucas'],
-'Peter': ['Lucy', 'Kyle'],
-},
-['Lucas', 'Bill']
-); // Убийца James
-getKiller(
-{
-'Brad': [],
-'Megan': ['Ben', 'Kevin'],
-'Finn': [],
-},
-['Ben']
-); // Убийца Megan
+// getKiller(
+// {
+// 'James': ['Jacob', 'Bill', 'Lucas'],
+// 'Johnny': ['David', 'Kyle', 'Lucas'],
+// 'Peter': ['Lucy', 'Kyle'],
+// },
+// ['Lucas', 'Bill']
+// ); // Убийца James
+// getKiller(
+// {
+// 'Brad': [],
+// 'Megan': ['Ben', 'Kevin'],
+// 'Finn': [],
+// },
+// ['Ben']
+// ); // Убийца Megan
 
 
 
@@ -274,25 +280,40 @@ getKiller(
 //* 1. applicants. Объект, в котором ключи - это номерки людей, по которым будет производится случайный отбор, а значения - это объекты кандидатов на выигрыш в лотерее
 //* 2. winnerObject. Это объект, в котором хранится всего 1 ключ prize, хранящий значения размера выигрыша в лотерее Вам необходимо случайным образом выбрать победный номерок (случайный ключ в объекте applicants) и вернуть из функции getWinner объект, в котором будут хранится свойства из winnerObject и объект победителя. Для получения случайного значения в диапазоне используйте следующую функцию:
 
-function getRandomNumberInRange(min, max) {
-return Math.floor(Math.random() * (max - min)) + min;
-}
+// function getRandomNumberInRange(min, max) {
+// return Math.floor(Math.random() * (max - min)) + min;
+// }
 
 
-function getWinner(applicants, winnerObject) {
+// function getWinner(applicants, winnerObject) {
 
-}
-//* Пример возвращаемого результата функции getWinner:
+// }
+// //* Пример возвращаемого результата функции getWinner:
 
-const todaysWinner = {
-prize: '10 000$',
-} 
-const winnerApplicants = {
-'001': { name: 'Максим', age: 25, },
-'201': { name: 'Светлана', age: 20, },
-'304': { name: 'Екатерина', age: 35, },
-} 
+// const todaysWinner = {
+// prize: '10 000$',
+// } 
+// const winnerApplicants = {
+// '001': { name: 'Максим', age: 25, },
+// '201': { name: 'Светлана', age: 20, },
+// '304': { name: 'Екатерина', age: 35, },
+// } 
 
-const resultWinner = getWinner(winnerApplicants, todaysWinner);
-console.log('resultWinner', resultWinner);
+// const resultWinner = getWinner(winnerApplicants, todaysWinner);
+// console.log('resultWinner', resultWinner);
 // { prize: '10 000$', name: 'Максим', age: 25 }
+
+
+
+const binaryArrayToNumber = arr => { 
+    let number = 0;
+    arr = arr.reverse();
+    for (let i = 0; i < arr.length; i += 1) {
+      if (arr[i] === 1) {
+        arr[i] = Math.pow(2, i);
+        number += arr[i];
+    }      
+  }
+  return number;
+};
+  binaryArrayToNumber([1, 0, 0, 1]);

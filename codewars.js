@@ -291,3 +291,80 @@
 // function lovefunc(flower1, flower2) {
 //     return flower1 % 2 !== flower2 % 2;
 //   }
+
+//* 18. Given an array of integers your solution should find the smallest integer.
+//* For example:
+
+//* Given [34, 15, 88, 2] your solution will return 2
+//* Given [34, -345, -1, 100] your solution will return -345
+//* You can assume, for the purpose of this kata, that the supplied array will not be empty.
+
+// class SmallestIntegerFinder {
+//     findSmallestInt(args) {
+//       let minVal = args[0];
+//       for (let i = 0; i < args.length; i += 1) {      
+//         if (minVal > args[i]) {
+//           minVal = args[i]
+//         }
+//       }
+//       return minVal;
+//     }
+//   }
+  
+//   // Another solution
+
+//   class SmallestIntegerFinder {
+//     findSmallestInt(args) {
+//       return Math.min(...args)
+//     }
+//   }
+
+//   class SmallestIntegerFinder {
+//     findSmallestInt(args) {
+//       return Math.min.apply(null, args);
+//     }
+//   }
+
+//   class SmallestIntegerFinder {
+//     findSmallestInt(args) {
+//       return args.sort((a,b)=>a-b)[0];
+//     }
+//   }
+
+//   class SmallestIntegerFinder {
+//     findSmallestInt( $ ) {
+//       return Math.min(...$);
+//     }
+//   }
+
+//* 19. Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+//* Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+
+//* Examples:
+
+// Testing: [0, 0, 0, 1] ==> 1
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 0, 1] ==> 5
+// Testing: [1, 0, 0, 1] ==> 9
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 1, 0] ==> 6
+// Testing: [1, 1, 1, 1] ==> 15
+// Testing: [1, 0, 1, 1] ==> 11
+
+//* However, the arrays can have varying lengths, not just limited to 4.
+
+// const binaryArrayToNumber = arr => { 
+//     let number = 0;
+//     arr = arr.reverse();
+//     for (let i = 0; i < arr.length; i += 1) {
+//       if (arr[i] === 1) {
+//         arr[i] = Math.pow(2, i);
+//         number += arr[i];
+//     }      
+//   }
+//   return number;
+// };
+
+// Another solution
+
+//const binaryArrayToNumber = arr => parseInt(arr.join(''), 2);
