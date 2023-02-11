@@ -153,25 +153,146 @@ job: 'веб-разработчик',
 
 //* Представьте, что вы разрабатываете интернет магазин по доставке еды. Вам поставили задачу подсчета итоговой суммы всех товаров в корзине. Вам необходимо создать функцию getTotalPriceOfShoppingBag, которая будет принимать в себя 1 параметр shoppingBag. shoppingBag - это массив продуктов в корзине, состоящий из объектов, в каждом из которых хранится информация о названии продукта (product) и о количестве продукта в корзине (quantity). Также у интернет-магазина есть глобальный объект, в котором хранится вся нужная информация о каждой единице продукта:
 
-const groceries = {
-    "Orange Juice": { price : 1.5, discount: 10, },
-    "Chocolate": { price : 2, discount : 0, },
-    
-    }
+// const groceries = {
+//     "Orange Juice": { price : 1.5, discount: 10, },
+//     "Chocolate": { price : 2, discount : 0, },    
+//     }
 
-//* Функция getTotalPriceOfShoppingBag должна возвращать общую стоимость всех товаров в корзине с учетом скидок и с учетом указанных клиентом количеством продуктов. Итоговое значение должно быть округлено до сотых. Это можно сделать с помощью toFixed (https://developer.mozilla.org/...) 
+// //* Функция getTotalPriceOfShoppingBag должна возвращать общую стоимость всех товаров в корзине с учетом скидок и с учетом указанных клиентом количеством продуктов. Итоговое значение должно быть округлено до сотых. Это можно сделать с помощью toFixed (https://developer.mozilla.org/...) 
 
-//* Посмотрите на возможно возвращаемое значение функции getTotalPriceOfShoppingBag:
+// //* Посмотрите на возможно возвращаемое значение функции getTotalPriceOfShoppingBag:
 
-const shoppingBag = [
-    { product: 'Chocolate', quantity: 3 },
-    { product: 'Orange Juice', quantity: 23 },
-    ] 
+// const shoppingBag = [
+//     { product: 'Chocolate', quantity: 3 },
+//     { product: 'Orange Juice', quantity: 23 },
+//     ] 
 
-function getTotalPriceOfShoppingBag() {
-    
+// function getTotalPriceOfShoppingBag(shoppingBag) {
+//     const shoppingItems = Object.values(shoppingBag); // Создание массива shoppingItems из значений объекта shoppingBag
+//     console.log('shoppingItems: ', shoppingItems);
+
+//     if (shoppingItems.length === 0) {
+//         return 0;
+//     }
+//     // Далее объявление переменной в которой помещается массив с применением к нему метода reduce() с помещением в метод аккумулятора и элемента массива currentProduct
+//     const totalPrice = shoppingItems.reduce((acc, currentProduct) => {
+//         const { product, quantity } = currentProduct; // Объявляется объект присваивается объявленный в методе элемент currentProduct, соот. при первом переборе reduce() product примет значение 'Chocolate' а quantity - 3. Далее 'Orange Juice' и 23
+//         const productObject = groceries[product]; // Объявляется переменная productObject в неё помещается элемент массива groceries, при данной итерации "Chocolate", то есть т.к. "Chocolate" строчный ключ объекта groceries в productObject будет помещено его ("Chocolate") значение кот является объектом -  { price : 2, discount: 0, }
+//         const { price, discount } = productObject; // Действие аналогичное началу функции метода - price присвоится 2, discount - 0 
+//         const priceWithDiscount = productObject.price - (price * discount / 100); // Объявляется priceWithDiscount, она принимает  -   productObject.price то есть на данной итерации 2  минус выражение 2*0 /100
+//         let totalProductPrice = priceWithDiscount * quantity; // Объявляется totalProductPrice и на данном этапе это 2*3
+//         return acc + totalProductPrice; // первая итерация 0+6   вторая 6+(1,5-10%)*23 итог 37,05
+//     }, 0);
+
+//     return totalPrice.toFixed(2); // toFixed(2) оставляет числу 2 знака после запятой, округлив значение по математическим правилам
+// }
+
+// const totalPrice = getTotalPriceOfShoppingBag(shoppingBag);
+// console.log('totalPrice', totalPrice); // Возвращает 37.05
+
+
+
+
+//* Задание #6 (дополнительное)
+
+//* К вам пришёл заказчик, который является владельцем одной из игровых веб-платформ. Он хочет, чтобы вы разработали для его сайта новую игру, которая покорит сердца многих пользователей. В игре есть 2 игрока: герой и враг. Они будут драться друг с другом. У каждого игрока есть шкала здоровья, которая изначально равна 100. При каждом ударе у противоположного игрока отнимается по 10 единиц здоровья. Побеждает тот, у кого здоровье осталось больше 0. Сейчас вам необходимо создать функцию startGame, которая будет принимать в себя 2 параметра:
+//* 1. heroPlayer. Объект игрока, который содержит свойства name - имя героя; health - шкала здоровья, которая изначально равна 100; heatEnemy - функция, которая принимает в себя объект enemy и отнимает у объекта enemy 10 единиц здоровья (ключ health)
+//* 2. enemyPlayer. Объект врага, который содержит свойства name - имя героя; health - шкала здоровья, которая изначально равна 100; heatHero - функция, которая принимает в себя объект hero и отнимает у объекта hero 10 единиц здоровья (ключ health) Внутри функции startGame вам необходимо случайным образом генерировать число от 0 до 1. Если выпадает 0, то нужно вызвать метод heatEnemy у объекта heroPlayer, если 1 - то heatHero у enemyPlayer Для того, чтобы функция генерировала несколько раз случайные значения и игроки дрались, пока у кого-то не закончатся жизни, рекомендуется использовать цикл while, который будет выполнятся, пока у любого игрока свойство health не станет меньше либо равно нулю. После выполнения цикла необходимо определить, какой игрок выиграл, и вывести сообщение через,где name и health - значения свойств победившего игрока. alert(`${name} победил! У него осталось ${health} здоровья`) Для генерации случайных значений используйте следующую функцию. 
+
+function getRandomNumberInRange(min, max) {
+return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-const totalPrice = getTotalPriceOfShoppingBag(shoppingBag);
-console.log('totalPrice', totalPrice); // Возвращает 37.05
+//* Для проверки работоспособности функции startGame используйте данный код. В нем нет методов heatEnemy и heatHero, вам необходимо самим их реализовать.
+
+const hero = {
+name: 'Batman',
+health: 100,
+} 
+const enemy = {
+name: 'Joker',
+health: 100,
+}
+
+function startGame(heroPlayer, enemyPlayer) {
+    while (heroPlayer.health > 0 || enemyPlayer.health > 0) {
+        const randomHeatIndex = getRandomNumberInRange(0, 1);
+        if (randomHeatIndex === 0) {
+            heroPlayer.heatEnemy(enemyPlayer);
+            if (enemyPlayer.health <= 0) {
+                break;
+            }
+        } else {
+            enemyPlayer.heatHero(heroPlayer);
+            if (heroPlayer.health <= 0) {
+                break;
+            }
+        }
+    }
+    if (heroPlayer.health <= 0) {
+        alert(`${enemyPlayer.name} победил! У него осталось ${enemyPlayer.health} здоровья`);
+    } else {
+        alert(`${heroPlayer.name} победил! У него осталось ${heroPlayer.health} здоровья`);
+    }
+}
+
+startGame(hero, enemy);
 
 
+
+
+
+
+
+//* Задание #7 (дополнительное)
+//* Представьте, что в полицейском участке проводится расследование. Было совершено несколько преступлений. У полицейских есть другие более приоритетные задания, поэтому они попросили вас написать программу, которая будет вычислять преступника по уже известным данным. Ваша задача состоит в том, чтобы создать функцию getKiller. getKiller принимает в себя 2 параметра:
+//* 1. suspectInfo. Это объект, в котором ключи - это подозреваемые в преступлении люди, а значения - массивы людей, которых видели подозреваемые в день убийства
+//* 2. deadPeople. Это массив с именами людей, которых убил преступник Преступником является тот, кто видел всех убитых  юдей в день убийства. Функция getKiller должна возвращать имя преступника.
+//* Примеры результатов функции getKiller:
+
+getKiller(
+{
+'James': ['Jacob', 'Bill', 'Lucas'],
+'Johnny': ['David', 'Kyle', 'Lucas'],
+'Peter': ['Lucy', 'Kyle'],
+},
+['Lucas', 'Bill']
+); // Убийца James
+getKiller(
+{
+'Brad': [],
+'Megan': ['Ben', 'Kevin'],
+'Finn': [],
+},
+['Ben']
+); // Убийца Megan
+
+
+
+//* Задание #8 (дополнительное)
+
+//* Вы когда-нибудь играли в лотерею? Лотерея - это игра, в которой случайным образом определяют победителя и дают ему выигрыш. Сейчас ваша задача будет разработать логику для такой игры. Вам необходимо создать функцию getWinner, которая принимает в себя 2 параметра:
+//* 1. applicants. Объект, в котором ключи - это номерки людей, по которым будет производится случайный отбор, а значения - это объекты кандидатов на выигрыш в лотерее
+//* 2. winnerObject. Это объект, в котором хранится всего 1 ключ prize, хранящий значения размера выигрыша в лотерее Вам необходимо случайным образом выбрать победный номерок (случайный ключ в объекте applicants) и вернуть из функции getWinner объект, в котором будут хранится свойства из winnerObject и объект победителя. Для получения случайного значения в диапазоне используйте следующую функцию:
+
+function getRandomNumberInRange(min, max) {
+return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+function getWinner(applicants, winnerObject) {
+
+}
+//* Пример возвращаемого результата функции getWinner:
+
+const todaysWinner = {
+prize: '10 000$',
+} 
+const winnerApplicants = {
+'001': { name: 'Максим', age: 25, },
+'201': { name: 'Светлана', age: 20, },
+'304': { name: 'Екатерина', age: 35, },
+} 
+
+const resultWinner = getWinner(winnerApplicants, todaysWinner);
+console.log('resultWinner', resultWinner);
+// { prize: '10 000$', name: 'Максим', age: 25 }
