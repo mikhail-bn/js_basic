@@ -38,3 +38,21 @@
 // }
 // const toSeeWord = reverseFunc(userWord);
 // alert(`Если перевернуть то будет ${toSeeWord}`);
+
+
+// MATE ACADEMY Задача про цену за номер в отеле
+
+// function getRentalPrice(daysToRest) {
+//     let totalCost = 0;  
+//     if (daysToRest < 4 && daysToRest > 0) {
+//       totalCost = daysToRest * 50;  
+//     } else if (daysToRest < 7 && daysToRest > 3) {
+//       totalCost = (daysToRest-3) * 40 + 150;    
+//     } else if (daysToRest > 6) {
+//       totalCost = (daysToRest-6) * 30 + 120 + 150;
+//     }
+//     return totalCost;
+//   }
+//   const mySpendings = getRentalPrice(8);
+//   console.log('mySpendings : ', mySpendings );
+ 

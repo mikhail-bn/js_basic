@@ -255,7 +255,30 @@ job: 'веб-разработчик',
 //* 2. deadPeople. Это массив с именами людей, которых убил преступник Преступником является тот, кто видел всех убитых  юдей в день убийства. Функция getKiller должна возвращать имя преступника.
 //* Примеры результатов функции getKiller:
 
-// getKiller(
+
+// function getKiller(suspectInfo, deadPeople) {
+//   let killerName = '';
+//   // Далее объект suspectInfo переводим в массив, и применяем метод перебора элементов forEach c помещением элемента перебора массива в data (имеющий 2 элемента - ключ-строка data[0] и значение массив data[1])
+//   Object.entries(suspectInfo).forEach((data) => {
+//     // Присвоение элементам  понятного имени
+//       const suspectPerson = data[0];
+//       const peopleWereSeen = data[1];
+//     // Помещение в переменную isKiller функцию проверки всех элементов помещённой в неё переменной deadName условию, что массив peopleWereSeen включает в себя элемент из deadName, то есть есть ли в массиве peopleWereSeen элемент из deadName
+//     // В первом переборе это будет:  peopleWereSeen === data[1] === ['Jacob', 'Bill', 'Lucas']
+//     //                               deadPeople === ['Lucas', 'Bill']
+//     // Условие заключается в том что все (every) элементы массива в переменной deadPeople должны быть в массиве peopleWereSeen
+//       const isKiller = deadPeople.every((deadName) => peopleWereSeen.includes(deadName));
+//       // Проверка возвращает ли функция true
+//       if (isKiller) {
+//         killerName = suspectPerson;
+//       }
+//   })
+  
+//   return killerName;
+  
+// }
+
+// const killer = getKiller(  
 // {
 // 'James': ['Jacob', 'Bill', 'Lucas'],
 // 'Johnny': ['David', 'Kyle', 'Lucas'],
@@ -272,6 +295,7 @@ job: 'веб-разработчик',
 // ['Ben']
 // ); // Убийца Megan
 
+// alert(`killer is ${killer}`);
 
 
 //* Задание #8 (дополнительное)
@@ -280,40 +304,46 @@ job: 'веб-разработчик',
 //* 1. applicants. Объект, в котором ключи - это номерки людей, по которым будет производится случайный отбор, а значения - это объекты кандидатов на выигрыш в лотерее
 //* 2. winnerObject. Это объект, в котором хранится всего 1 ключ prize, хранящий значения размера выигрыша в лотерее Вам необходимо случайным образом выбрать победный номерок (случайный ключ в объекте applicants) и вернуть из функции getWinner объект, в котором будут хранится свойства из winnerObject и объект победителя. Для получения случайного значения в диапазоне используйте следующую функцию:
 
-// function getRandomNumberInRange(min, max) {
-// return Math.floor(Math.random() * (max - min)) + min;
-// }
-
-
-// function getWinner(applicants, winnerObject) {
-
-// }
-// //* Пример возвращаемого результата функции getWinner:
-
 // const todaysWinner = {
-// prize: '10 000$',
-// } 
+//   prize: '10 000$',
+// }
+
 // const winnerApplicants = {
-// '001': { name: 'Максим', age: 25, },
-// '201': { name: 'Светлана', age: 20, },
-// '304': { name: 'Екатерина', age: 35, },
-// } 
+//   '001': {
+//       name: 'Максим',
+//       age: 25,
+//   },
+//   '201': {
+//       name: 'Светлана',
+//       age: 20,
+//   },
+//   '304': {
+//       name: 'Екатерина',
+//       age: 35,
+//   },
+// }
+
+// function getRandomNumberInRange(min, max) {
+//   return Math.floor(Math.random() * (max - min)) + min;
+// }
+
+// const getWinner = (applicants, winnerObject) => {
+//   const applicationNumbers = Object.keys(winnerApplicants);
+//   const winnerIndex = getRandomNumberInRange(0, applicationNumbers.length);
+//   const winnerNumber = applicationNumbers[winnerIndex];
+//   const winnerPerson = applicants[winnerNumber];
+
+//   return {
+//       ...winnerObject,
+//       ...winnerPerson,
+//   };
+// }
 
 // const resultWinner = getWinner(winnerApplicants, todaysWinner);
 // console.log('resultWinner', resultWinner);
-// { prize: '10 000$', name: 'Максим', age: 25 }
 
 
 
-const binaryArrayToNumber = arr => { 
-    let number = 0;
-    arr = arr.reverse();
-    for (let i = 0; i < arr.length; i += 1) {
-      if (arr[i] === 1) {
-        arr[i] = Math.pow(2, i);
-        number += arr[i];
-    }      
-  }
-  return number;
-};
-  binaryArrayToNumber([1, 0, 0, 1]);
+
+
+

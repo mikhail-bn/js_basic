@@ -16,7 +16,7 @@ const goodInfo = {
 //     console.log('value: ', value);
 // }
 
-//* =======  Object.keys()  .values()   .entries()   ==========
+//* =======   Object.keys()  .values()   .entries()  ==========
 
 const keys = Object.keys(goodInfo) // Создаст массив с ключами из объекта goodInfo
 console.log('keys: ', keys);

@@ -368,3 +368,87 @@
 // Another solution
 
 //const binaryArrayToNumber = arr => parseInt(arr.join(''), 2);
+
+
+//* 20.Write a function that takes an array of numbers and returns the sum of the numbers. The numbers can be negative or non-integer. If the array does not contain any numbers then you should return 0.
+
+// Examples
+// Input: [1, 5.2, 4, 0, -1]
+// Output: 9.2
+
+// Input: []
+// Output: 0
+
+// Input: [-2.398]
+// Output: -2.398
+
+// function sum (numbers) {  
+//     let sumOfnumbers = 0;
+//     for (let i = 0; i < numbers.length; i += 1) {
+//       sumOfnumbers += numbers[i]
+//     }
+//     return  sumOfnumbers
+//   };
+
+// Use reduce!
+
+// function sum(numbers) {
+//   return numbers.reduce((acc, num) => acc + num, 0);
+// }
+// const viewSum = sum([1, 5.2, 4, 0, -1]);
+// console.log('viewSum: ', viewSum);
+
+//* 21.Given an integral number, determine if it's a square number:
+
+//* In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+//* The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+
+// var isSquare = function(n){
+//     let squareNum = Math.sqrt(n);
+//     return Number.isInteger(squareNum)
+//     }
+
+//* 22.Can you find the needle in the haystack?
+//* Write a function findNeedle() that takes an array full of junk but containing one "needle"
+//* After your function finds the needle it should return a message (as a string) that says:
+//* "found the needle at position " plus the index it found the needle, so:
+//* Example(Input --> Output)
+//* ["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"] --> "found the needle at position 5" 
+
+// function findNeedle(haystack) {
+//     const newHaystack = haystack.indexOf('needle')
+//     return `found the needle at position ${newHaystack}`;
+//   }
+
+//* 23.Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+//* Examples:
+//* Input: 42145 Output: 54421
+//* Input: 145263 Output: 654321
+//* Input: 123456789 Output: 987654321
+
+// function descendingOrder(n) {
+//     n = String(n);  
+//     let sortArr = n.split('').sort((a, b) => {
+//       return b - a;
+//     });
+//     let getStr = sortArr.join('');    
+//     return Number(getStr);
+//   }
+
+//* 24.Given the triangle of consecutive odd numbers:
+//                 1   
+//             3     5
+//         7     9    11
+//     13    15    17    19
+// 21    23    25    27    29
+
+//* Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+//* 1 -->  1
+//* 2 --> 3 + 5 = 8
+
+// function rowSumOddNumbers(n) {
+//     return n * n * n
+//     }
