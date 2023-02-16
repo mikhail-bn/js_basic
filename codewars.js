@@ -452,3 +452,95 @@
 // function rowSumOddNumbers(n) {
 //     return n * n * n
 //     }
+
+//* 25.Simple, given a string of words, return the length of the shortest word(s).
+//*String will never be empty and you do not need to account for different data types.
+
+// function findShort(s){
+//     const sArr = s.split(' '); 
+//     let theSmallestWord = sArr[0];
+//     for (let i = 0; i < sArr.length; i += 1) {
+//       if (sArr[i].length < theSmallestWord.length) {
+//         theSmallestWord = sArr[i];      
+//       }     
+//     } 
+  
+//     return theSmallestWord.length;
+//   }
+
+//* 26.Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+//* Examples
+// "This is an example!" ==> "sihT si na !elpmaxe"
+// "double  spaces"      ==> "elbuod  secaps"
+
+
+// function reverseWords(str) {
+//     const strReverse =  str.split(' ');
+//     const strReverseWord = strReverse.map((word) => word.split('').reverse().join(''))    
+//     console.log('strReverseWord: ', strReverseWord);
+   
+//     return strReverseWord.join(' ') ;
+//   }
+
+//* 27. You might know some pretty large perfect squares. But what about the NEXT one?
+
+//* Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+//* If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
+
+//* Examples:(Input --> Output)
+
+// 121 --> 144
+// 625 --> 676
+// 114 --> -1 since 114 is not a perfect square
+
+// function findNextSquare(sq) {
+//     let nextNumber = 0;
+//     let nextNumberPow = 0;
+//    if(!Number.isInteger(Math.sqrt(sq))){
+//      return -1;
+//    } else {
+//      nextNumber = Math.sqrt(sq) +1;
+//      nextNumberPow = Math.pow(nextNumber, 2)
+//      console.log('nextNumberPow: ', nextNumberPow);   
+//    }
+//     return nextNumberPow;
+//   }
+
+// *===================================================  7kyu ========================================================
+// ===================================================================================================================
+// ===================================================================================================================
+
+//* 1.Cats and shelves
+
+//* Description
+//* An infinite number of shelves are arranged one above the other in a staggered fashion. The cat can jump either one or three shelves at a time: from shelf i to shelf i+1 or i+3 (the cat cannot climb on the shelf directly above its head), according to the illustration:
+
+//*Input
+//* Start and finish shelf numbers (always positive integers, finish no smaller than start)
+
+//* Task
+//* Find the minimum number of jumps to go from start to finish
+
+//* Example
+//* Start 1, finish 5, then answer is 2 (1 => 4 => 5 or 1 => 2 => 5)
+
+// function solution(start, finish) {  
+//     const iterTree = Math.floor((finish - start) / 3);
+//     const someChange = (finish - start) - iterTree * 3;  
+//     const iter = iterTree + someChange;
+//     return iter;
+//   }
+
+//* 2. In this Kata, you will be given a string and your task will be to return a list of ints detailing the count of uppercase letters, lowercase, numbers and special characters, as follows.
+
+//* Solve("*'&ABCDabcde12345") = [4,5,5,3]. 
+//* --the order is: uppercase letters, lowercase, numbers and special characters.
+
+//   function solve(s){   
+//     const charUpper = (s.match(/[A-Z]/g)  || []).length;
+//     const char = (s.match(/[a-z]/g) || []).length;
+//     const numbers = (s.match(/[0-9]/g) || []).length;
+//     const symbols = s.length - charUpper - char - numbers;  
+//     return [charUpper, char, numbers, symbols];  
+//   }
