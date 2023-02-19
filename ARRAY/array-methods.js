@@ -30,7 +30,7 @@
 
 
 
-//* indexOf
+//* indexOf 
 // возвращает индекс искомого элемента, поэтому либо его нужно помещать в переменную, либо метод к массиву будет работать в рамках другог выражения.
 // При не нахождении отсутствующего параметра вместо индекса выдаёт -1
 
@@ -86,11 +86,19 @@
 //* Удаление и замена replace('what', 'toWhat')
 //* Не меняет исходный массив
 
+
 // const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
 
 // console.log(p.replace('dog', 'monkey'));
 // Expected output: "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
 
+
+
 //* Возведение в степень 
 // Math.pow(base, exponent)
+
+
+
+//* Корень квадратный числа 
+// Math.sqrt(number)
 

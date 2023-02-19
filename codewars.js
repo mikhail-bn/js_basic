@@ -508,8 +508,14 @@
 //   }
 
 // *===================================================  7kyu ========================================================
-// ===================================================================================================================
-// ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
+//! ===================================================================================================================
 
 //* 1.Cats and shelves
 
@@ -543,4 +549,347 @@
 //     const numbers = (s.match(/[0-9]/g) || []).length;
 //     const symbols = s.length - charUpper - char - numbers;  
 //     return [charUpper, char, numbers, symbols];  
+//   }
+
+//* 3. Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
+//* Assume that the input n will always be a positive integer.
+
+//* Examples: (Input --> output)
+
+//* 2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+//* 3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+
+// function sumCubes(n){
+//   let sum = 0;
+//   for (let i = 1; i <= n; i += 1) {
+//     sum += Math.pow(i, 3)
+//   }
+//     return sum;
+//   }
+
+//* 4.Given a 2D ( nested ) list ( array, vector, .. ) of size m * n, your task is to find the sum of the minimum values in each row.
+
+//* For Example:
+
+// [ [ 1, 2, 3, 4, 5 ]        #  minimum value of row is 1
+// , [ 5, 6, 7, 8, 9 ]        #  minimum value of row is 5
+// , [ 20, 21, 34, 56, 100 ]  #  minimum value of row is 20
+// ]
+
+//* So the function should return 26 because the sum of the minimums is 1 + 5 + 20 = 26.
+
+//* Note: You will always be given a non-empty list containing positive values.
+
+
+
+// function sumOfMinimums(arr) {
+//   let sum = 0,      
+//   minFor = 0
+// for (let i = 0; i < arr.length; i += 1) { 
+// minFor = arr[i][0];
+// for (let n = 1; n < arr[i].length; n += 1) {      
+//   if (minFor > arr[i][n]){
+//     minFor = arr[i][n];
+//   }
+// }
+// sum += minFor;
+// }
+// return sum;
+// }
+
+//* 5. 21 Sticks
+//* The game. In this game, there are 21 sticks lying in a pile. Players take turns taking 1, 2, or 3 sticks. The last person to take a stick wins. For example:
+
+// 21 sticks in the pile
+
+// Bob takes 2  -->  19 sticks left
+// Jim takes 3  -->  16 sticks
+// Bob takes 3  -->  13 sticks
+// Jim takes 1  -->  12 sticks
+// Bob takes 2  -->  10 sticks
+// Jim takes 2  -->   8 sticks
+// Bob takes 3  -->   5 sticks
+// Jim takes 3  -->   2 sticks
+// Bob takes 2  -->  Bob wins!
+
+//* Your task
+//* Create a robot that will always win the game. Your robot will always go first. The function should take an integer and returns 1, 2, or 3.
+
+//* Note: The input will always be valid (a positive integer)
+
+
+// function makeMove(sticks) {
+//  return sticks % 4
+// }
+
+//* 6. Write a function that returns the number of occurrences of an element in an array.
+
+//* This function will be defined as a property of Array with the help of the method Object.defineProperty, which allows to define a new method directly on the object (more info about that you can find on MDN). (Сколько раз элемент присутствует в массиве)
+
+// Examples
+// var arr = [0, 1, 2, 2, 3];
+// arr.numberOfOccurrences(0) === 1;
+// arr.numberOfOccurrences(4) === 0;
+// arr.numberOfOccurrences(2) === 2;
+// arr.numberOfOccurrences(3) === 1;
+
+
+//* ================================================================
+
+
+// Object.defineProperty(Array.prototype, 'numberOfOccurrences',{ 
+//     value : function numberOfOccurrences(element) {
+//       let sum = 0;
+//       for (let i = 0; i < this.length; i += 1) {
+//         if (this[i] === element){
+//           sum++
+//         }
+//       }
+//       return sum
+//     }
+//   });
+
+
+
+//* 7. Overview
+//* Bubblesort is an inefficient sorting algorithm that is simple to understand and therefore often taught in introductory computer science courses as an example how not to sort a list. Nevertheless, it is correct in the sense that it eventually produces a sorted version of the original list when executed to completion.
+
+//* At the heart of Bubblesort is what is known as a pass. Let's look at an example at how a pass works.
+
+//* Consider the following list:
+
+// 9, 7, 5, 3, 1, 2, 4, 6, 8
+//* We initiate a pass by comparing the first two elements of the list. Is the first element greater than the second? If so, we swap the two elements. Since 9 is greater than 7 in this case, we swap them to give 7, 9. The list then becomes:
+
+// 7, 9, 5, 3, 1, 2, 4, 6, 8
+//* We then continue the process for the 2nd and 3rd elements, 3rd and 4th elements ... all the way up to the last two elements. When the pass is complete, our list becomes:
+
+// 7, 5, 3, 1, 2, 4, 6, 8, 9
+//* Notice that the largest value 9 "bubbled up" to the end of the list. This is precisely how Bubblesort got its name.
+
+//* Task
+//* Given an array of integers, your function bubblesortOnce/bubblesort_once/BubblesortOnce (or equivalent, depending on your language's naming conventions) should return a new array equivalent to performing exactly 1 complete pass on the original array. Your function should be pure, i.e. it should not mutate the input array.
+
+
+
+// function bubblesortOnce(a) {
+//     let cloneA = [...a]; // Добавить массив а как элемент в массив cloneA
+//      for (let i = 0; i < cloneA.length - 1; i++){ 
+//        if (cloneA[i] > cloneA[i + 1]) {
+//          [cloneA[i],cloneA[i + 1]] = [cloneA[i + 1],cloneA[i]] // Строка меняет местами элементы массива
+//        }
+//      }
+//      return cloneA;
+//    }
+
+
+
+//* 8. Task
+//* For a given list of digits 0 to 9, return a list with the same digits in the same order, but with all 0s paired. Pairing two 0s generates one 0 at the location of the first one.
+
+//* Examples
+// input: [0, 1, 0, 2]
+// paired: ^-----^
+//     -> [0, 1,   2]
+//   kept: ^
+
+// input: [0, 1, 0, 0]
+// paired: ^-----^
+//     -> [0, 1,    0]
+//   kept: ^        ^
+
+// input: [1, 0, 7, 0, 1]
+// paired:    ^-----^
+//     -> [1, 0, 7,    1]
+//   kept:    ^
+
+// input: [0, 1, 7, 0, 2, 2, 0, 0, 1, 0]
+// paired: ^--------^        ^--^
+//     -> [0, 1, 7,    2, 2, 0,    1, 0]
+//   kept: ^                 ^        ^
+
+//* Notes
+//* Pairing happens from left to right. For each pairing, the second 0 will always be paired towards the first ( right to left )
+//* 0 s generated by pairing can NOT be paired again ( void where not applicable: ) Don't modify the input array or you may fail to pass the tests
+
+// function pairZeros(arr) {
+//     let cloneArr = [],
+//         counter = 1;
+//      for (let i = 0; i < arr.length; i++) {
+//        if (arr[i] === 0 && counter % 2) {
+//         cloneArr.push(arr[i]);
+//         console.log(cloneArr)
+//         counter += 1;
+//        } else if (arr[i]) {
+//         cloneArr.push(arr[i]);
+//         console.log(cloneArr)
+//        } else counter += 1;
+//      }
+//      console.log(cloneArr)
+//      return cloneArr;
+//    }
+
+//* 9. Exclamation marks series #18: a simple slot machine that only contains exclamation marks and question marks
+//* Description:
+//* You are playing a simple slot machine that only contains exclamation marks and question marks. Every time the slot machine is started, a string of 5 length is obtained. If you're lucky enough to get a Special permutation, you'll win the bonus. Give you a string s, return the highest bonus.
+
+//* Bouns list:
+
+// Five-of-a-Kind:   ---- 1000
+// "!!!!!" or "?????"
+
+// Four-of-a-Kind:    ---- 800
+// The string contains a "!!!!" or "????"
+// "!!!!?","?!!!!","????!","!????"
+
+// Full House:         ----500
+// such as "!!!??" or "???!!"...
+
+// Three-of-a-Kind:    ---- 300
+// The string contains a "!!!" or "???"
+// such as "!!!?!","!???!"...
+
+// Two pair:           ---- 200
+// The string contains two "!!" or "??"
+// such as "??!!?","!!?!!"
+
+// A Pair:             ---- 100
+// The string contains a "!!" or "??"
+// such as "?!??!","!!?!?"
+
+// Others              ---- 0
+// such as "?!?!?","!?!?!"
+
+// Examples
+
+// slot("!!!!!") === 1000
+// slot("!!!!?") === 800
+// slot("!!!??") === 500
+// slot("!!!?!") === 300
+// slot("!!?!!") === 200
+// slot("!!?!?") === 100
+// slot("!?!?!") === 0
+
+//*===========================================================
+
+// function slot(s){
+//     if (s === "!!!!!" || s === "?????") {return 1000};
+//     if (s.includes("!!!!") || s.includes("????")) {return 800};
+//     if (s === "!!!??" || s === "???!!" || s === '??!!!' || s === '!!???') {return 500};
+//     if (s.includes("!!!") || s.includes("???")) {return 300};
+//     if (s === "!!?!!" || s === "??!??" || s === '!!??!' || s === '??!!?' || s === '!??!!' || s === '?!!??') {return 200};
+//     if (s.includes("??") || s.includes("!!")) {return 100};
+//     return 0;
+//   }
+
+
+//* 10. Return a function that will trim a string (the first argument given) if it is longer than the maximum string length (the second argument given). The result should also end with "..."
+
+//* These dots at the end also add to the string length.
+
+//* So in the above example, trim("Creating kata is fun", 14) should return "Creating ka..."
+
+//* If the maximum string length is smaller than or equal to 3 characters, then the length of the dots is not added to the string length.
+
+//* e.g. trim("He", 1) should return "H...", because 1 <= 3
+
+//* If the string is smaller or equal than the maximum string length, then simply return the string with no trimming or dots required.
+
+//* e.g. trim("Code Wars is pretty rad", 50) should return "Code Wars is pretty rad"
+
+
+// function trim(str, size) {
+//     if (str.length <= size) return str;
+//     if (str.length < 3 || size <= 3) {
+//       return str.slice(0, size) + '...';
+//     } else return str.slice(0, size-3)+'...';    
+//     }
+
+//* 11. Covfefe
+//* Your are given a string. You must replace any occurence of the sequence coverage by covfefe, however, if you don't find the word coverage in the string, you must add covfefe at the end of the string with a leading space.
+
+//* For the languages where the string is mutable (such as ruby), don't modify the given string, otherwise this will break the test cases.
+
+// function covfefe(str){
+//     //covfefe !    
+//     if(str.includes('coverage')) {
+//         str = str.replaceAll('coverage', 'covfefe');      
+//     } else str = str + ' covfefe';
+//     console.log('str: ', str);
+//     return str;
+//   }
+
+//* 12. Set Reducer
+//* Intro
+//* These arrays are too long! Let's reduce them!
+
+//* Description
+//* Write a function that takes in an array of integers from 0-9, and returns a new array:
+
+//* Numbers with no identical numbers preceding or following it returns a 1: 2, 4, 9  => 1, 1, 1
+//* Sequential groups of identical numbers return their count: 6, 6, 6, 6 => 4
+//* Example
+
+// [0, 4, 6, 8, 8, 8, 5, 5, 7] => [1, 1, 1, 3, 2, 1]
+
+//*Your function should then repeat the process on the resulting array, and on the resulting array of that, until it returns a single integer:
+
+// [0, 4, 6, 8, 8, 8, 5, 5, 7] =>  [1, 1, 1, 3, 2, 1] => [3, 1, 1, 1] => [1, 3] => [1, 1] => [2]
+
+//* When your function has reduced the array to a single integer following these rules, it should return that integer.
+
+// [2] => 2
+
+//* Rules and assertions
+//* All test arrays will be 2+ in length
+//* All integers in the test arrays will be positive numbers from 0 - 9
+//* You should return an integer, not an array with 1 element
+
+// function setReducer(input) {
+//     let finalNumber = 0;               
+//         while (input.length > 1) {
+//             let preview = input[0],
+//                 counter = 1,
+//                 tempArr = [];
+//             for (let i = 1; i <= input.length; i += 1) { 
+//                 if (input[i] !== preview) {
+//                     tempArr.push(counter);
+//                     counter = 1;                                                 
+//                 } else counter += 1;
+//                 preview = input[i];                
+//             }   
+//         input = tempArr;
+//         tempArr = [];         
+//         }
+//     finalNumber = input.toString(); 
+//     return Number(finalNumber)
+// } 
+
+
+//* 13. Count the number of occurrences of each character and return it as a (list of tuples) in order of appearance. For empty output return (an empty list).
+
+//* Consult the solution set-up for the exact data structure implementation depending on your language.
+
+//* Example:
+
+//orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
+
+// const orderedCount = function (text) {
+//     const baseArr = text.split('')
+//     let arr = [],
+//         tempArr = [],
+//         count = [],
+//         tempStr = ''
+//     for (let i = 0; i < baseArr.length; i += 1) {
+//        if (!tempStr.includes(baseArr[i])) {
+//             tempArr.push(baseArr[i]);
+//             tempStr += baseArr[i]
+//             count = baseArr.filter((symbol) => {return symbol === baseArr[i]} )
+//             tempArr.push(count.length);            
+//             arr.push(tempArr);
+//             tempArr = [];
+//         }
+//     }
+    
+//     return [...arr];
 //   }

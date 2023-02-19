@@ -342,7 +342,62 @@ job: 'веб-разработчик',
 // const resultWinner = getWinner(winnerApplicants, todaysWinner);
 // console.log('resultWinner', resultWinner);
 
+// function trim(str, size) {
+//     let newString = str;
+//     if (newString.length >= 3 && newString.length >= size && size < 3) {
+//         newString = newString.slice(0, size ) + '...';
+//     } else if (newString.length >= 3 && newString.length >= size) {
+//         newString = newString.slice(0, size - 3) + '...';          
+//     } else if (newString.length <= 3) {
+//         newString = newString.slice(0, size) + '...';
+//     } else if (newString.length <= size) {
+//         newString = str;
+//     }
+//     console.log(newString) 
+//     return newString;
+//   }
+
+//   trim("SKM sQ", 50)
 
 
+// function trim(str, size) {
+//     let newString = '';
+//     let dots = '...'
+//     if (str.length <= size) {
+//       return str;
+//     }
+//     if (str.length > 3) {
+//        size -= 3;
+//     }  
+//      for (let i = 0; i < size ; i += 1){
+//        newString += str[i]
+//      }
+//       newString = newString + dots;
+//       return newString;
+//     }
+// const one = trim("hnpHn", 2)
+// console.log('one: ', one);
 
+const orderedCount = function (text) {
+    const baseArr = text.split('')
+    let arr = [],
+        tempArr = [],
+        count = [],
+        tempStr = ''
+    for (let i = 0; i < baseArr.length; i += 1) {
+       if (!tempStr.includes(baseArr[i])) {
+            tempArr.push(baseArr[i]);
+            tempStr += baseArr[i]
+            count = baseArr.filter((symbol) => {return symbol === baseArr[i]} )
+            tempArr.push(count.length);            
+            arr.push(tempArr);
+            tempArr = [];
+        }
+    }
+    
+    return [...arr];
+  }
 
+  const one = orderedCount("abracadabra")
+  console.log('one: ', one);
+ 
