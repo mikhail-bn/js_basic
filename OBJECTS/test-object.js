@@ -378,26 +378,50 @@ job: 'веб-разработчик',
 // const one = trim("hnpHn", 2)
 // console.log('one: ', one);
 
-const orderedCount = function (text) {
-    const baseArr = text.split('')
-    let arr = [],
-        tempArr = [],
-        count = [],
-        tempStr = ''
-    for (let i = 0; i < baseArr.length; i += 1) {
-       if (!tempStr.includes(baseArr[i])) {
-            tempArr.push(baseArr[i]);
-            tempStr += baseArr[i]
-            count = baseArr.filter((symbol) => {return symbol === baseArr[i]} )
-            tempArr.push(count.length);            
-            arr.push(tempArr);
-            tempArr = [];
-        }
+function rpsls(pl1, pl2) {
+  if (pl1 === 'rock') {
+    switch (pl2) {
+      case 'lizard':
+      case 'scissors': return 'Player 1 Won!';
+      case 'rock': return 'Draw!';      
+      default: return 'Player 2 Won!';      
     }
-    
-    return [...arr];
+  } else if (pl1 === 'lizard') {
+    switch (pl2) {
+      case 'spock':
+      case 'paper':
+        return 'Player 1 Won!';
+      case 'lizard': return 'Draw!';
+      default: return 'Player 2 Won!';      
+    }
+  } else  if (pl1 === 'scissors') {
+    switch (pl2) {
+      case 'lizard':
+      case 'paper':
+        return 'Player 1 Won!';
+      case 'scissors': return 'Draw!';
+      default: return 'Player 2 Won!';      
+    }
+  } else  if (pl1 === 'paper') {
+    switch (pl2) {
+      case 'rock':
+      case 'spock':
+        return 'Player 1 Won!';
+      case 'paper': return 'Draw!';
+      default: return 'Player 2 Won!';      
+    }
+  } else  if (pl1 === 'spock') {
+    switch (pl2) {
+      case 'rock':
+      case 'scissors':
+        return 'Player 1 Won!';
+      case 'spock': return 'Draw!';
+      default: return 'Player 2 Won!';      
+    }
   }
+  console.log(pl1, pl2);
+}
 
-  const one = orderedCount("abracadabra")
-  console.log('one: ', one);
- 
+
+const one = rpsls('spock', 'paper');
+console.log('one: ', one);

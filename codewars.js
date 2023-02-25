@@ -507,6 +507,27 @@
 //     return nextNumberPow;
 //   }
 
+//* 28. Create a function that accepts a string and a single character, and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+
+//* If no occurrences can be found, a count of 0 should be returned.
+
+// ("Hello", "o")  ==>  1
+// ("Hello", "l")  ==>  2
+// ("", "z")       ==>  0
+// str_count("Hello", 'o'); // returns 1
+// str_count("Hello", 'l'); // returns 2
+// str_count("", 'z'); // returns 0
+
+//* Notes
+//*The first argument can be an empty string
+//* In languages with no distinct character data type, the second argument will be a string of length 1
+
+
+// function strCount(str, letter){  
+//     const arr = str.split('').filter((s) => s === letter);
+//     return arr.length
+//   }
+
 // *===================================================  7kyu ========================================================
 //! ===================================================================================================================
 //! ===================================================================================================================
@@ -892,4 +913,148 @@
 //     }
     
 //     return [...arr];
+//   }
+
+//* 14. Help Suzuki count his vegetables....
+//* Suzuki is the master monk of his monastery so it is up to him to ensure the kitchen is operating at full capacity to feed his students and the villagers that come for lunch on a daily basis.
+//* This week there was a problem with his deliveries and all the vegetables became mixed up. There are two important aspects of cooking in his kitchen, it must be done in harmony and nothing can be wasted. Since the monks are a record keeping people the first order of business is to sort the mixed up vegetables and then count them to ensure there is enough to feed all the students and villagers.
+//* You will be given a string with the following vegetables:
+
+// "cabbage", "carrot", "celery", "cucumber", "mushroom", "onion", "pepper", "potato", "tofu", "turnip"
+
+//* Return a list of tuples with the count of each vegetable in descending order. If there are any non vegetables mixed in discard them. If the count of two vegetables is the same sort in reverse alphabetical order (Z->A).
+
+// (119, "pepper"),
+// (114, "carrot"),
+// (113, "turnip"),
+// (102, "onion"),
+// (101, "tofu"),
+// (100, "cabbage"),
+// (93, "mushroom"),
+// (90, "cucumber"),
+// (88, "potato"),
+// (80, "celery")
+
+//! Проработать!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// function countVegetables(string){
+
+//     const dict=["cabbage", "carrot", "celery", "cucumber", "mushroom", "onion", "pepper", "potato", "tofu", "turnip"]
+//     const arr=[].concat(string.split(' ')).map(v=>v.replace(/\n$/g,'')).filter(v=>v.length&&dict.includes(v));
+//     let obj={};
+//     arr.map(v=>obj[v]=obj[v]?obj[v]+1:1);
+//     const keys=Object.keys(obj)
+//     const values=Object.values(obj)
+//     const answ=[];
+//     keys.map((v,i)=>answ.push([values[i],v]))
+//     return answ.sort((a,b)=>{
+//     if (a[0]<b[0]){
+//     return 1}
+//     if (a[0]>b[0]){
+//     return -1}
+//     if (a[0]===b[0]){
+//       return b[1].localeCompare(a[1])
+//     }
+//     })
+//   }
+
+//* 15. Complete the function that takes a string of English-language text and returns the number of consonants in the string.
+
+//* Consonants are all letters used to write English excluding the vowels a, e, i, o, u.
+
+// function consonantCount(str) {
+//     let count = 0;
+//      for (let letter of str) {
+//       if ('qwrtplkjhgfdszxcvbnmyQWRTPLKJHGFDSZXCVBNMY'.includes(letter)) {
+//         count += 1
+//       }
+//      }
+//      return count
+//   }
+
+//* 16. Please write a function that sums a list, but ignores any duplicate items in the list.
+//* For instance, for the list [3, 4, 3, 6] , the function should return 10.
+
+// function sumNoDuplicates(numList) {
+//     let sum = 0,
+//         arr = numList.slice(0);
+//     for (let i = 0; i < arr.length; i += 1) {
+//       let num = arr[i];
+//       delete arr[i];
+//       if (!arr.includes(num)) {
+//         sum += num;
+//       } else arr = numList.slice(0);
+//     }
+//     console.log(sum)
+//     return sum;
+//   }
+
+//* Правильный вариант))))))))
+
+// function sumNoDuplicates(numList) {
+//     const uniqueArr = numList.filter((num,index) => numList.indexOf(num) === index && numList.lastIndexOf(num) === index)
+//     return uniqueArr.reduce((x,y) => x + y, 0);
+//     }
+
+//* 17. Rock Paper Scissors Lizard Spock 
+//* In this kata, your task is to implement an extended version of the famous rock-paper-scissors game. The rules are as follows:
+
+// Scissors cuts Paper
+// Paper covers Rock
+// Rock crushes Lizard
+// Lizard poisons Spock
+// Spock smashes Scissors
+// Scissors decapitates Lizard
+// Lizard eats Paper
+// Paper disproves Spock
+// Spock vaporizes Rock
+// Rock crushes Scissors
+
+//* Task:
+//* Given two values from the above game, return the Player result as "Player 1 Won!", "Player 2 Won!", or "Draw!".
+
+//* Inputs
+//* Values will be given as one of "rock", "paper", "scissors", "lizard", "spock".
+
+// function rpsls(pl1, pl2) {
+//     if (pl1 === 'rock') {
+//       switch (pl2) {
+//         case 'lizard':
+//         case 'scissors': return 'Player 1 Won!';
+//         case 'rock': return 'Draw!';      
+//         default: return 'Player 2 Won!';      
+//       }
+//     } else if (pl1 === 'lizard') {
+//       switch (pl2) {
+//         case 'spock':
+//         case 'paper':
+//           return 'Player 1 Won!';
+//         case 'lizard': return 'Draw!';
+//         default: return 'Player 2 Won!';      
+//       }
+//     } else  if (pl1 === 'scissors') {
+//       switch (pl2) {
+//         case 'lizard':
+//         case 'paper':
+//           return 'Player 1 Won!';
+//         case 'scissors': return 'Draw!';
+//         default: return 'Player 2 Won!';      
+//       }
+//     } else  if (pl1 === 'paper') {
+//       switch (pl2) {
+//         case 'rock':
+//         case 'spock':
+//           return 'Player 1 Won!';
+//         case 'paper': return 'Draw!';
+//         default: return 'Player 2 Won!';      
+//       }
+//     } else  if (pl1 === 'spock') {
+//       switch (pl2) {
+//         case 'rock':
+//         case 'scissors':
+//           return 'Player 1 Won!';
+//         case 'spock': return 'Draw!';
+//         default: return 'Player 2 Won!';      
+//       }
+//     }
+//     console.log(pl1, pl2);
 //   }
