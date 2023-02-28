@@ -1058,3 +1058,501 @@
 //     }
 //     console.log(pl1, pl2);
 //   }
+
+//* С помощью объектов
+
+// function rpsls(pl1, pl2) {
+//   if (pl1 === pl2) return 'Draw!'
+//   let rules = {
+//       'paper': ['rock', 'spock'],
+//       'rock': ['lizard', 'scissors'],
+//       'lizard': ['spock', 'paper'],
+//       'spock': ['scissors', 'rock'],
+//       'scissors': ['lizard', 'paper']       
+//   }
+//   if (rules[pl1].includes(pl2))
+//       return 'Player 1 Won!'
+//   else
+//       return 'Player 2 Won!'
+// }
+
+//* 18. Your task is to remove all consecutive duplicate words from a string, leaving only first words entries. For example:
+
+// "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+
+// --> "alpha beta gamma delta alpha beta gamma delta"
+
+// function removeConsecutiveDuplicates(s)  {
+//   let tempS =  s.split(' '),
+//   cloneS = []
+// for (let i = 0; i < tempS.length; i += 1) {
+// if (tempS[i + 1] !== tempS[i]){
+//   cloneS.push(tempS[i])    
+// }
+// }
+// return cloneS.join(' '); 
+// }
+
+//* OR....
+// const removeConsecutiveDuplicates = s => s.split(" ").filter((x,i,arr) => x!=arr[i-1]).join(" ");
+
+
+//* 19.Given a string and an array of integers representing indices, capitalize all letters at the given indices.
+
+// For example:
+
+// capitalize("abcdef",[1,2,5]) = "aBCdeF"
+// capitalize("abcdef",[1,2,5,100]) = "aBCdeF". There is no index 100.
+//* The input will be a lowercase string with no spaces and an array of digits.
+
+//*Good luck!
+
+// function capitalize(s, arr) {
+//     let tempArr = s.split(''),
+//         newArr = [];    
+//       for (let i = 0; i < tempArr.length; i++) {        
+//         if (arr.includes(i)) {
+//           newArr.push(tempArr[i].toUpperCase())
+//           } else newArr.push(tempArr[i])
+//         }     
+//     return newArr.join('');
+//   };
+
+//* OR.. with .MAP
+
+// function capitalize(str, arr){
+//     const arrLetters = [...str]
+//     arr.map(el=>  el > str.length ? '' : arrLetters[el] = arrLetters[el].toUpperCase() )
+//     return arrLetters.join('')
+//   };
+//* OR...
+// function capitalize(s,arr){
+//     return [...s].map((x,i)=>arr.includes(i)?x.toUpperCase():x).join('')
+//   };
+
+
+//* 20. Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+// For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+//* The input will be a lowercase string with no spaces.
+
+// function capitalize(s) {
+//     let evenString = [],
+//         oddString = [];
+//     evenString.push(s[0].toUpperCase());
+//     oddString.push(s[0]);
+//     for (let i = 1; i < s.length; i++) {
+//       if (i % 2 === 0) {
+//         evenString.push(s[i].toUpperCase());
+//         oddString.push(s[i]);
+//       } else {evenString.push(s[i]);
+//               oddString.push(s[i].toUpperCase());}
+//     }
+//     return [evenString.join(''), oddString.join('')];
+//   }
+
+//* OR... with .MAP
+
+// function capitalize(s){
+//     return [[...s].map((x,i) => i % 2 == 0 ? x.toUpperCase() : x).join(''),
+//             [...s].map((x,i) => i % 2 != 0 ? x.toUpperCase() : x).join('')]
+//   }
+
+// function capitalize(s){
+//     return [0,1].map(r=>[...s].map((c,i)=>i%2===r?c.toUpperCase():c).join(''));
+//   };
+
+  //* OR...
+
+//   function capitalize(s) {
+//     return s.split('').reduce((acc, val, i) => {
+//         acc[0] += i % 2 === 0 ? val.toUpperCase() : val.toLowerCase();
+//         acc[1] += i % 2 === 0 ? val.toLowerCase() : val.toUpperCase();
+//         return acc;
+//     }, ['', '']);
+// };
+
+//* 21. Given an array, return the difference between the count of even numbers and the count of odd numbers. 0 will be considered an even number.
+
+// For example:
+// solve([0,1,2,3]) = 0 because there are two even numbers and two odd numbers. Even - Odd = 2 - 2 = 0.  
+
+//* Let's now add two letters to the last example:
+
+//* solve([0,1,2,3,'a','b']) = 0. Again, Even - Odd = 2 - 2 = 0. Ignore lettersThe input will be an array of lowercase letters and numbers only.
+
+//* solve ["0","1","2","3","a","b"] = 0 
+
+// function solve(a){
+//     let diff = 0,
+//         oddSum = 0,
+//         evenSum = 0,
+//         onlyNum = [];
+//     a.forEach((num) => {
+//         if (Number(num)  || num === 0) {
+//         onlyNum.push(num);
+//         }
+//         });
+//     onlyNum.forEach((num) => num % 2 === 0 ? evenSum += 1 : oddSum += 1);
+//     diff = evenSum - oddSum;  
+//     return diff;
+//   }
+//* OR...
+// function solve(a){
+//     return a.reduce(((x, y) => Number.isInteger(y) ? (y%2 === 0 ? x+1 : x-1) : x), 0);
+//   } 
+
+//* 22 The vowel substrings in the word codewarriors are o,e,a,io. The longest of these has a length of 2. Given a lowercase string that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel substring. Vowels are any of aeiou.
+
+// function solve(s) {
+//     let sArr = s.split(''),    
+//         counts = 1,
+//         result = [];
+//     for (let i = 0; i < sArr.length; i++) {
+//      if ('aeiou'.includes(sArr[i]) && 'aeiou'.includes(sArr[i - 1])) {
+//        counts += 1;
+//        result.push(counts);  
+//      } else  counts = 1;
+//     }
+//     result.push(counts); 
+//     result.sort((a, b) => b - a);
+//      console.log(s)
+//     return result[0];
+//     }
+
+//* OR...
+
+// const solve = s => s.split(/[^aeiou]/).reduce((s,n)=> Math.max(s,n.length),0);
+//* OR...
+ //function solve(s){
+//  return Math.max(...s.match(/[aeiou]+/g).map(x => x.length));
+// }
+
+//* My PC got infected by a strange virus. It only infects my text files and replaces random letters by *, li*e th*s (like this).
+
+//* Fortunately, I discovered that the virus hides my censored letters inside root directory.
+
+//* It will be very tedious to recover all these files manually, so your goal is to implement uncensor function that does the hard work automatically.
+
+// Examples
+// uncensor("*h*s *s v*ry *tr*ng*", "Tiiesae") ➜ "This is very strange"
+
+// uncensor("A**Z*N*", "MAIG") ➜ "AMAZING"
+
+// uncensor("xyz", "") ➜ "xyz"
+
+//* Notes
+//* Expect all discovered letters to be given in the correct order. Discovered letters will match the number of censored ones. Any character can be censored.
+
+// function uncensor(infected, discovered) {
+//     let count = 0,
+//         uncensoredStr = infected;
+//     for (let i = 0; i < infected.length; i++) {
+//       if (infected[i] === '*') {      
+//          uncensoredStr = uncensoredStr.replace(infected[i], discovered[count]);
+//         count++
+//       }
+//     }  
+//     return uncensoredStr;
+//   }
+
+//* OR...
+
+// function uncensor(infected, discovered, it=0) {
+//     return infected.replace(/\*/g, e=>discovered[it++]);
+//   }
+
+//* 24. Growth of a Population
+
+//* In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+
+//* At the end of the first year there will be: 
+//*1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+//* At the end of the 2nd year there will be: 
+//* 1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+
+//* At the end of the 3rd year there will be:
+//* 1141 + 1141 * 0.02 + 50 => 1213
+
+//* It will need 3 entire years.
+//* More generally given parameters:
+
+//* p0, percent, aug (inhabitants coming or leaving each year), p (population to equal or surpass) the function nb_year should return n number of entire years needed to get a population greater or equal to p. aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
+
+// Examples:
+// nb_year(1500, 5, 100, 5000) -> 15
+// nb_year(1500000, 2.5, 10000, 2000000) -> 10
+//* Note: Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
+
+// function nbYear(p0, percent, aug, p) {
+//     let years = 0;
+//     for (years; p0 < p; years++) {
+//       p0 += p0 * (percent / 100) + aug;
+//       p0 = Math.floor(p0);
+//     }
+//     return years;
+//   }
+
+
+
+
+//* 25. Jenny the youngest detective
+
+//* Jenny is 9 years old. She is the youngest detective in North America. Jenny is a 3rd grader student, so when a new mission comes up, she gets a code to decipher in a form of a sticker (with numbers) in her math notebook and a comment (a sentence) in her writing notebook. All she needs to do is to figure out one word, from there she already knows what to do. And here comes your role - you can help Jenny find out what the word is!
+
+//* In order to find out what the word is, you should use the sticker (array of 3 numbers) to retrive 3 letters from the comment (string) that create the word.
+
+//* Each of the numbers in the array refers to the position of a letter in the string, in increasing order. Spaces are not places, you need the actual letters. No spaces. The returned word should be all lowercase letters. if you can't find one of the letters using the index numbers, return "No mission today". Jenny would be very sad, but that's life... :(
+
+//Example: input: [5, 0, 3], "I Love You" output: "ivy" (0 = "i", 3 = "v", 5 = "y")
+
+
+
+// function missingWord(nums, str) {
+//     nums.sort((a,b) => a - b)
+//     str = str.split(' ').join('')
+//     let strArr = [...str],
+//         word = [];
+//     for (let i = 0; i < nums.length; i++) {
+//       word.push(strArr[nums[i]])
+//     }  
+//     if (word.join('').toLowerCase().length === 3){
+//       return word.join('').toLowerCase()
+//     } else return 'No mission today'
+//   }
+  
+
+//* OR...!!!!!!!!!!!!!!!!!!!!!!!
+
+// function missingWord(nums, str) {
+//     return str.replace(/\s/g,'').length > Math.max(...nums) ? nums.sort((a,b)=>a-b).map(v=>str.replace(/\s/g,'')[v]).join('').toLowerCase() : 'No mission today';
+//   }
+
+
+
+//* 26. Page replacement algorithms: FIFO
+
+//*In a computer operating system that uses paging for virtual memory management, page replacement algorithms decide which memory pages to page out when a page of memory needs to be allocated. Page replacement happens when a requested page is not in memory (page fault) and a free page cannot be used to satisfy the allocation, either because there are none, or because the number of free pages is lower than some threshold.
+
+//* The FIFO page replacement algorithm
+//* The first-in, first-out (FIFO) page replacement algorithm is a low-overhead algorithm that requires little bookkeeping on the part of the operating system. The idea is obvious from the name: the operating system keeps track of all the pages in memory in a queue, with the most recent arrival at the back, and the oldest arrival in front. When a page needs to be replaced, the oldest page is selected. Note that a page already in the queue is not pushed at the end of the queue if it is referenced again.
+
+//* Your task is to implement this algorithm. The fifo function will take two parameters as input: the number of maximum pages that can be kept in memory at the same time n and a reference list containing numbers. Every number represents a page request for a specific page (you can see this number as the unique ID of a page). The expected output is the status of the memory after the application of the algorithm. Note that when a page is inserted in the memory, it stays at the same position until it is removed from the memory by a page fault.
+
+// Example:
+// Given:
+
+// N = 3,
+// REFERENCE LIST = [1, 2, 3, 4, 2, 5],
+//   * 1 is read, page fault --> memory = [1];
+//   * 2 is read, page fault --> memory = [1, 2];
+//   * 3 is read, page fault --> memory = [1, 2, 3];
+//   * 4 is read, page fault --> memory = [4, 2, 3];
+//   * 2 is read, already in memory, nothing happens;
+//   * 5 is read, page fault --> memory = [4, 5, 3].
+// So, at the end we have the list [4, 5, 3], which is what you have to return. If not all the slots in the memory get occupied after applying the algorithm, fill the remaining slots (at the end of the list) with -1 to represent emptyness (note that the IDs will always be >= 1).
+
+//* NOT works
+
+// function fifo(n, referenceList) {
+//     let result = [],
+//         count = 0;  
+//    for (let i = 0; i < referenceList.length; i++) {
+//      if (!result.includes(referenceList[i])){
+//        if (result.length < n) {
+//           result.push(referenceList[i])
+//         } else {        
+//             if (count < n) {
+//               if (!result.includes(referenceList[i])){
+//                 result.splice(count, 1, referenceList[i])
+//               };
+//               count++
+//             } else {
+//               count = 0;
+//               if (!result.includes(referenceList[i])) 
+//               {result.splice(count, 1, referenceList[i])}
+//             }         
+//           }
+//       }
+//    }
+//    for (let j = 0; j <= n; j++) {
+//     if (result.length < n) result.push(-1)
+//    } 
+//       return result;
+//   }
+
+//* Solution 
+
+// function fifo(n, referenceList) {
+//     let result = Array(n).fill(-1),
+//         position = 0
+// for (let i of referenceList) {
+//     if (!result.includes(i)) {
+//         result[position] = i
+//         position = (position + 1) % n
+//     }
+// }
+// return result
+// }       
+
+
+//* 27. Arithmetic progression
+
+//*  In your class, you have started lessons about arithmetic progression. Since you are also a programmer, you have decided to write a function that will return the first n elements of the sequence with the given common difference d and first element a. Note that the difference may be zero!
+
+//* The result should be a string of numbers, separated by comma and space.
+
+// Example
+// # first element: 1, difference: 2, how many: 5
+// arithmetic_sequence_elements(1, 2, 5) == "1, 3, 5, 7, 9"
+
+// function arithmeticSequenceElements(a, d, n) {
+//     let arr = [],
+//         num = a;
+//     arr.push(a)
+//     for (let i = 1; i < n; i++) {
+//       num += d
+//       arr.push(num)
+//     }
+//       return arr.join(', ');
+//   }
+
+//* OR
+
+// [...Array(count)].map((_, index) => start + difference * index).join(', ');
+
+
+
+
+//*  28. Sort by Last Char
+//* Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+//*If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+//* All inputs will be valid.
+
+// function last(x){
+//   return x.split(' ').sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
+//   }
+
+//* 29 T.T.T.#5: Only you ===========!!!! NOT SOLVED  !!!!===================
+
+//* Rules
+//* Please determine if the string s is "only you":
+
+//* The string should contains "you". Such as "only you","I love you","Nice to meet you";
+//* "you" can be discontinuous. Such as "y o u","y@o#u","yaobu";
+//* "you" should ignore case. Such as "You","YOU","YoU".
+//* The string should NOT contains "I","me","he","him","they","them","we". They MUST be continuous, but ignore the case.
+//* If the string s conforms to the above condition, returns true; otherwise, returns false.
+
+// Examples
+// onlyYou("you") should return true
+// onlyYou("YoU") should return true
+// onlyYou("y o u") should return true
+// onlyYou("yxoxu") should return true
+// onlyYou("only you") should return true
+// onlyYou("I love you") should return false
+// onlyYou("I hate you") should return false
+// onlyYou("Do you love me?") should return false
+// onlyYou("we trust you") should return false
+// onlyYou("you hit him") should return false
+// onlyYou("I love youtube") should return false
+
+// function onlyYou(s){
+//   s=s.replace(/[^\w]/g,'')
+//   if (/I|me|he|him|they|them|we/gi.test(s)) return false
+//   s=s.replace(/[^you]/gi,'')
+//   if (/y(.*?)o(.*?)u/gi.test(s)) return true
+//   return false
+//  }
+
+
+//* 29. Find the nth Digit of a Number
+
+//*Complete the function that takes two numbers as input, num and nth and return the nth digit of num (counting from right to left).
+
+// Note
+// If num is negative, ignore its sign and treat it as a positive value
+// If nth is not positive, return -1
+// Keep in mind that 42 = 00042. This means that findDigit(42, 5) would return 0
+// Examples(num, nth --> output)
+// 5673, 4 --> 5
+// 129, 2 --> 2
+// -2825, 3 --> 8
+// -456, 4 --> 0
+// 0, 20 --> 0
+// 65, 0 --> -1
+// 24, -8 --> -1
+
+
+
+
+// function findDigit(num, nth) {  
+//   console.log(num, nth)
+//   if (nth <= 0) {
+//    return -1
+//  } else if (nth > Math.abs(num).toString().length) {
+//    return 0
+//  } else  {
+//     let arr = num.toString().split('').map(i => +i)
+//     return arr[arr.length - nth] 
+//    }
+// }
+
+//* 30. Vowel Count
+
+//* Return the number (count) of vowels in the given string.
+//* We will consider a, e, i, o, u as vowels for this Kata (but not y).
+//* The input string will only consist of lower case letters and/or spaces.
+
+// function getCount(str) {
+//   let arr = [];
+//   [...str].filter(s => 'aeiou'.includes(s) ? arr.push(s) : s)
+//   return arr.length
+// }
+
+//* OR...
+
+// function getCount(str) {
+//   return (str.match(/[aeiou]/ig)||[]).length;
+// }
+
+//* 31. Digit*Digit
+
+//* Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+//* For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+
+//*Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+
+//* Note: The function accepts an integer and returns an integer.
+
+
+
+// function squareDigits(num){
+//   return Number(num.toString().split('').map(s => +s).map(n => Math.pow(n, 2)).join(''))
+//  }
+
+
+
+
+
+//* 32. Highest and Lowest
+//* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+// Examples
+// highAndLow("1 2 3 4 5");  // return "5 1"
+// highAndLow("1 2 -3 4 5"); // return "5 -3"
+// highAndLow("1 9 3 4 -5"); // return "9 -5"
+
+//* Notes
+//* All numbers are valid Int32, no need to validate them. There will always be at least one number in the input string. Output string must be two numbers separated by a single space, and highest number is first.
+
+// function highAndLow(numbers){
+//   let arr = [],
+//       numArr = numbers.split(' ').map(n => +n)      
+//   arr.push(Math.max(...numArr), Math.min(...numArr))  
+//   return arr.map(n => n.toString()).join(' ')
+// }

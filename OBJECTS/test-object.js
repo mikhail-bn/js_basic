@@ -378,50 +378,13 @@ job: 'веб-разработчик',
 // const one = trim("hnpHn", 2)
 // console.log('one: ', one);
 
-function rpsls(pl1, pl2) {
-  if (pl1 === 'rock') {
-    switch (pl2) {
-      case 'lizard':
-      case 'scissors': return 'Player 1 Won!';
-      case 'rock': return 'Draw!';      
-      default: return 'Player 2 Won!';      
-    }
-  } else if (pl1 === 'lizard') {
-    switch (pl2) {
-      case 'spock':
-      case 'paper':
-        return 'Player 1 Won!';
-      case 'lizard': return 'Draw!';
-      default: return 'Player 2 Won!';      
-    }
-  } else  if (pl1 === 'scissors') {
-    switch (pl2) {
-      case 'lizard':
-      case 'paper':
-        return 'Player 1 Won!';
-      case 'scissors': return 'Draw!';
-      default: return 'Player 2 Won!';      
-    }
-  } else  if (pl1 === 'paper') {
-    switch (pl2) {
-      case 'rock':
-      case 'spock':
-        return 'Player 1 Won!';
-      case 'paper': return 'Draw!';
-      default: return 'Player 2 Won!';      
-    }
-  } else  if (pl1 === 'spock') {
-    switch (pl2) {
-      case 'rock':
-      case 'scissors':
-        return 'Player 1 Won!';
-      case 'spock': return 'Draw!';
-      default: return 'Player 2 Won!';      
-    }
-  }
-  console.log(pl1, pl2);
+function highAndLow(numbers){
+  let arr = [],
+      numArr = numbers.split(' ').map(n => +n)      
+  arr.push(Math.max(...numArr), Math.min(...numArr))  
+  return arr.map(n => n.toString()).join(' ')
 }
 
-
-const one = rpsls('spock', 'paper');
+const one = highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4");
 console.log('one: ', one);
+
