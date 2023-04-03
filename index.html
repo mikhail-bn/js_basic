@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Console Hello</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Работа с DOM</title>
 </head>
-<body style="background: rgb(68, 68, 68); color: rgb(184, 245, 133); text-align: center;">    
-    <h1>JavaScript</h1>
-    <script src="/CLASSES_OOP/oop-task.js"></script>
+<body style="background: rgb(68, 68, 68); color: rgb(184, 245, 133); text-align: center; margin: 0 auto;">    
+    <h1 class="title">JavaScript</h1>    
+        <div class="main-navigation">
+            <div class="main-navigation__container">
+                <a data-button-id="1" href="#task_today"  class="main-navigation__button-item">Задачи на сегодня</a>
+                <a data-button-id="2" href="#task_for_week"  class="main-navigation__button-item">Задачи на эту неделю</a>
+                <a data-button-id="3" href="#task_later"  class="main-navigation__button-item">Задачи на потом</a>
+            </div>
+        </div>
+        <div id="tasks">
+            <div class="tasks__wrapper">
+                <form class="create-task-block">
+                <input
+                    name="taskName"
+                    class="create-task-block__input default-text-input"
+                    type="text"
+                    placeholder="Создайте новую задачу"
+                    value="Посмотреть урок по JavaScript"
+                >
+                <button type="submit" class="create-task-block__button default-button main-navigation__button-item">
+                    Создать
+                </button>
+                </form>
+                <div class="tasks-list">
+                    <div class="task-item">
+
+                    </div>
+                </div>
+            </div>
+        </div>      
+    <script src="/DOM/html-element-properties.js"></script>
 </body>
 </html>

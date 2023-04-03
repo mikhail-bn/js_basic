@@ -1,0 +1,67 @@
+.title {
+    padding: 30px 0px;
+}
+.main-container {    
+    
+}
+.main-navigation {    
+    background-color: rgb(59, 59, 59);
+    justify-content: center;
+    display: flex;
+    align-content: center;  
+}
+.main-navigation__container {
+    
+    max-width: 1067px;
+    display: flex;
+    flex: 1 1 auto;     
+    align-content: center;    
+    justify-content: space-between;  
+}
+.main-navigation__button-item {       
+    padding: 15px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgb(184, 245, 133);
+    font-family: sans-serif;
+    background-color: rgb(54, 54, 54);
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+.main-navigation__button-item:hover {
+    background-color: rgb(184, 245, 133);
+    color: rgb(59, 59, 59)
+}
+.tasks {
+    padding: 15px;    
+}
+.tasks__wrapper {
+    padding: 60px 0px; 
+    display: flex;
+    align-content: center;   
+}    
+.create-task-block {
+    margin: 0 auto; 
+    display: flex;
+    align-content: center;        
+}
+.create-task-block__input {
+    padding: 10px;
+    background: rgb(68, 68, 68);    
+    color: rgba(183, 245, 133, 0.534);    
+    font-size: 16px;
+    transition: all 0.3s ease 0s;
+}
+.create-task-block__button {
+    font-size: 16px;
+    
+}
+.default-text-input {
+
+}
+.default-button {
+
+}
+.tasks-list {
+
+}
