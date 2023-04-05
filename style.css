@@ -29,7 +29,7 @@
     transition: all 0.3s ease 0s;
 }
 .main-navigation__button-item_selected {
-    box-shadow: inset 0 0 0 3px rgb(68, 68, 68);
+    box-shadow: inset 0 0 0 3px rgb(184, 245, 133);
     transition: all 0.3s ease 0s;
 }
 .main-navigation__button-item:hover {
@@ -46,6 +46,7 @@
     align-content: center;   
 }    
 .create-task-block {
+    position: relative;
     margin: 0 auto;
     padding: 30px 0px; 
     display: flex;
@@ -54,8 +55,8 @@
 .create-task-block__input {
     padding: 10px;
     background: rgb(68, 68, 68);    
-    color: rgba(183, 245, 133, 0.534);    
-    font-size: 16px;
+    color: rgba(183, 245, 133, 0.349);    
+    font-size: 15px;
     transition: all 0.3s ease 0s;
 }
 .create-task-block__button {
@@ -73,6 +74,9 @@
     padding: 15px 0px;
     
 }
+.task-item__delete-button {
+    position: relative;
+}
 .checkbox-form {
     display: inline-block;
 }
@@ -87,5 +91,21 @@
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;    
-    
+}
+.tooltip {
+    position: absolute;
+    left: -50%;
+    bottom: calc(100% - 5px);
+    margin: 0 auto;
+    padding: 10px;
+    color: rgb(184, 245, 133);
+    background-color: rgb(54, 54, 54);
+    box-shadow: 3px 3px 0 0  rgba(0, 0, 0, 0.473);
+}
+.error-message-block {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    color: rgb(255, 158, 102);
+    font-size: 14px;
 }
