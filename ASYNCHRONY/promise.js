@@ -26,7 +26,7 @@ const promise = new Promise((resolve, reject) => {
 console.log(promise);
 
 
-//* Методы then catch finally
+//* Методы .then .catch .finally
 
 promise
     .then((successMessage) => {
