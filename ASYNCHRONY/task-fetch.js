@@ -112,26 +112,107 @@
 //* Задание #3
 
 
-const usersPhotos = 'https://jsonplaceholder.typicode.com/photos/';
-const ids = [];
+// const usersPhotos = 'https://jsonplaceholder.typicode.com/photos/';
+// const ids = [];
+// const dataContainer = document.querySelector('#data-container');
+
+// const createUserNotice = (url, title) => {
+//     const userElement = document.createElement('li');
+//     userElement.className = 'photo-item';
+
+//     const userElementAnchor = document.createElement('img');
+//     userElementAnchor.classList.add('photo-item__image');
+//     userElementAnchor.src = url;   
+//     userElement.append(userElementAnchor);
+
+//     const userElementTitle = document.createElement('h3');
+//     userElementTitle.classList.add('photo-item__title');
+//     userElementTitle.textContent = title;
+//     userElement.prepend(userElementTitle);
+
+//     return userElement
+// }
+// const toggleLoader = () => {
+//     const loaderHTML = document.querySelector('#loader');
+//     const isHidden = loaderHTML.hasAttribute('hidden');
+//     if (isHidden) {
+//         loaderHTML.removeAttribute('hidden');
+//     } else {
+//         loaderHTML.setAttribute('hidden', '');
+//     }
+// }
+// const getFastestLoadedPhoto = (ids) => {
+//     toggleLoader();
+//     Promise.race(ids.map(id => fetch(`${usersPhotos}/${id}`)))
+//         .then(response => response.json())
+//         .then((photo) => {
+//             const photoItem = createUserNotice(photo.url, photo.title);
+//             dataContainer.append(photoItem);
+//             console.log(photo.url);
+//             console.log(photo.title);
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//             })
+//         .finally(() => {
+//             toggleLoader()
+//             })
+// }
+// getFastestLoadedPhoto([60, 12, 55])
+
+
+//* Задание #4
+
 const dataContainer = document.querySelector('#data-container');
 
-const createUserNotice = (userName) => {
-    const userElement = document.createElement('li');
-    userElement.className = 'photo-item';
+const userPostComment = (userComment, email) => {
+   
+    const comment = document.createElement('div');
+    comment.className = 'post__comment';
+    
+    const commentAuthor = document.createElement('span');
+    commentAuthor.className = 'post-comment__author';
+    commentAuthor.textContent = email;
+    comment.append(commentAuthor);
 
-    const userElementAnchor = document.createElement('img');
-    userElementAnchor.classList.add('photo-item__image');
-    userElementAnchor.src = 'https://via.placeholder.com/600/92c952';
-    userElementAnchor.textContent = userName;
-    userElement.append(userElementAnchor);
+    const commentText = document.createElement('span');
+    commentText.className = 'post-comment__text';
+    commentText.textContent = userComment;
+    comment.prepend(commentText);
 
-    const userElementTitle = document.createElement('h3');
-    userElementTitle.classList.add('photo-item__title');
-    userElementTitle.textContent = 'accusamus beatae ad facilis cum similique qui sunt';
-    userElement.prepend(userElementTitle);
+    return comment
+}
+const createBlockComments = (title, bodyText, userComments) => {
+    const blockComments = document.createElement('div');
+    blockComments.className = 'post';
+    blockComments.id = 'post';
+    
+    const postTitle = document.createElement('h1');
+    postTitle.className = 'post__title';
+    postTitle.textContent = title;
+    blockComments.prepend(postTitle);
 
-    return userElement
+    const postText = document.createElement('p');
+    postText.className = 'post__text';
+    postText.textContent = bodyText;
+    blockComments.append(postText);
+
+    const postCommentsTitle = document.createElement('b');
+    postCommentsTitle.className = 'post__comments-text';
+    postCommentsTitle.textContent = 'Комментарии';
+    blockComments.append(postCommentsTitle);
+
+    const comments = document.createElement('div');
+    comments.className = 'post__comments';    
+
+    userComments.forEach((comment) => {
+        const commentHtml = userPostComment(comment.body, comment.email);
+        comments.append(commentHtml);
+    })
+    blockComments.append(comments);
+
+
+    return blockComments
 }
 const toggleLoader = () => {
     const loaderHTML = document.querySelector('#loader');
@@ -142,8 +223,99 @@ const toggleLoader = () => {
         loaderHTML.setAttribute('hidden', '');
     }
 }
-const getFastestLoadedPhoto = (ids) => {
-    toggleLoader();
-    Promise.race()
+
+const commentsUrl = `https://jsonplaceholder.typicode.com/comments`;   
+const userUrl = `https://jsonplaceholder.typicode.com/posts`;
+
+const renderPost = (postId) => {
+    toggleLoader();    
+    fetch(`${userUrl}/${postId}`)
+        .then(response => response.json())
+        .then((post) => {
+            fetch(`${commentsUrl}?postId=${post.id}`)
+                .then(response => response.json())
+                .then((comments) => {
+                    const blockComment = createBlockComments(post.title, post.body, comments);
+                    console.log('blockComment: ', blockComment);
+                    document.body.append(blockComment);   
+                })
+                .catch(error => console.log(error))                   
+        })
+        .catch(error => console.log(error))
+        .finally(() => {
+            toggleLoader()
+        })
 }
-getFastestLoadedPhoto()
+renderPost(1);
+
+
+// const createComment = (author, text) => {
+//     const comment = document.createElement('div');
+//     comment.className = 'post-comment';
+  
+//     const commentAuthor = document.createElement('span');
+//     commentAuthor.className = 'post-comment__author';
+//     commentAuthor.innerText = author;
+  
+//     const commentText = document.createElement('span');
+//     commentText.className = 'post-comment__text';
+//     commentText.innerText = text;
+  
+//     comment.append(commentAuthor, commentText);
+  
+//     return comment;
+//   }
+  
+//   const createPost = (postName, text, comments) => {
+//     const post = document.createElement('div');
+//     post.id = 'post';
+//     post.className = 'post';
+    
+//     const postTitle = document.createElement('h1');
+//     postTitle.className = 'post__title';
+//     postTitle.innerText = postName; 
+  
+//     const postText = document.createElement('p');
+//     postText.className = 'post__text';
+//     postText.innerText = text;
+  
+//     const commentsText = document.createElement('b');
+//     commentsText.className = 'post__comments-text';
+//     commentsText.innerText = 'Комментарии';
+  
+//     const commentsBlock = document.createElement('div');
+//     commentsBlock.className = 'post__comments';
+  
+//     comments.forEach((comment) => {
+//       const commentHTML = createComment(comment.email, comment.body);
+//       commentsBlock.append(commentHTML);
+//     });
+  
+//     post.append(postTitle, postText, commentsText, commentsBlock);
+  
+//     return post;
+//   }
+  
+//   const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
+//   const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
+  
+//   const renderPost = (postId) => {
+//     fetch(`${POSTS_URL}/${postId}`)
+//       .then((response) => response.json())
+//       .then((post) => {
+//         fetch(`${COMMENTS_URL}?postId=${post.id}`)
+//           .then((response) => response.json())
+//           .then((comments) => {
+//             const postHTML = createPost(post.title, post.body, comments);
+//             document.body.append(postHTML);
+//           })
+//           .catch((error) => {
+//             console.error(error);
+//           })
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       })
+//   }
+  
+//   renderPost(1);
