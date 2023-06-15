@@ -8,11 +8,13 @@ const getCallback = (callback) => {
     fetch(FIRST_TODO_URL)
         .then((response) => response.json())
         .then((todo) => {
-            console.log('todo: ', todo);
+            callback(todo);
         })
         .catch(error => {
             console.log('Error');
         })        
 }
-getCallback()
+getCallback((todoItem) => {
+    console.log('todoItem: ', todoItem);    
+})
 
