@@ -1,0 +1,12 @@
+body{
+    background: #414141;
+    color: #ffec3f;
+}
+h1{
+    font-family: sans-serif;
+}
+img{
+    width: 650px;
+    height: 300px;
+    border-radius: 15px;
+}
