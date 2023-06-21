@@ -10,7 +10,7 @@
 // Установка file-loader
 // Установка webpack-dev-server
 // Конфигурация с сайта webpack.js.org -> #using-webpack-dev-server
-// Ghjgbcfnm rjvfyls d package.json
+// Прописать команды в package.json
 
 import "../style.css";
 import css from "../style.css";
